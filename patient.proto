@@ -3,6 +3,7 @@ syntax = "proto3";
 option go_package = ".";
 
 package rekam_medis;
+import "accounting.proto";
 
 message GetPatientsRequest {
     int64 pageSize = 1;
@@ -45,15 +46,6 @@ message CauseOfDeath {
     string note = 2;
 }
 
-message Accounting {
-    int64 createBy = 1;
-    string createAt = 2;
-    int64 updateBy = 3;
-    string updateAt = 4;
-    int64 deleteBy = 5;
-    string deleteAt = 6;
-}
-
 message BloodType {
     HelperVar bloodType = 1;
     bool rhesus = 2;
@@ -78,7 +70,7 @@ message PatientData {
     CauseOfDeath causeOfDeath = 16;
     Accounting accounting = 17;
     HelperVar gender = 18;
-    BloodType bloddType = 19;
+    BloodType bloodType = 19;
     HelperVar religion = 20;
     HelperVar marriageStatus = 21;
     HelperVar educationLevel = 22;

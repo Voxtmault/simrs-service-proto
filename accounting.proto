@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option go_package = ".";
+
+package rekam_medis;
+
+message Accounting {
+    int64 createBy = 1;
+    string createAt = 2;
+    int64 updateBy = 3;
+    string updateAt = 4;
+    int64 deleteBy = 5;
+    string deleteAt = 6;
+}
