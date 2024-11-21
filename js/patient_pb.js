@@ -237,7 +237,10 @@ proto.rekam_medis.GetPatientsRequest.toObject = function(includeInstance, msg) {
     patientname: jspb.Message.getFieldWithDefault(msg, 4, ""),
     dob: jspb.Message.getFieldWithDefault(msg, 5, ""),
     nik: jspb.Message.getFieldWithDefault(msg, 6, ""),
-    mrstr: jspb.Message.getFieldWithDefault(msg, 7, "")
+    mrstr: jspb.Message.getFieldWithDefault(msg, 7, ""),
+    mothernik: jspb.Message.getFieldWithDefault(msg, 8, ""),
+    bpjsid: jspb.Message.getFieldWithDefault(msg, 9, ""),
+    ihsnumber: jspb.Message.getFieldWithDefault(msg, 10, "")
   };
 
   if (includeInstance) {
@@ -301,6 +304,18 @@ proto.rekam_medis.GetPatientsRequest.deserializeBinaryFromReader = function(msg,
     case 7:
       var value = /** @type {string} */ (reader.readString());
       msg.setMrstr(value);
+      break;
+    case 8:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setMothernik(value);
+      break;
+    case 9:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setBpjsid(value);
+      break;
+    case 10:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setIhsnumber(value);
       break;
     default:
       reader.skipField();
@@ -377,6 +392,27 @@ proto.rekam_medis.GetPatientsRequest.serializeBinaryToWriter = function(message,
   if (f.length > 0) {
     writer.writeString(
       7,
+      f
+    );
+  }
+  f = message.getMothernik();
+  if (f.length > 0) {
+    writer.writeString(
+      8,
+      f
+    );
+  }
+  f = message.getBpjsid();
+  if (f.length > 0) {
+    writer.writeString(
+      9,
+      f
+    );
+  }
+  f = message.getIhsnumber();
+  if (f.length > 0) {
+    writer.writeString(
+      10,
       f
     );
   }
@@ -509,13 +545,67 @@ proto.rekam_medis.GetPatientsRequest.prototype.setMrstr = function(value) {
 };
 
 
+/**
+ * optional string motherNik = 8;
+ * @return {string}
+ */
+proto.rekam_medis.GetPatientsRequest.prototype.getMothernik = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 8, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.rekam_medis.GetPatientsRequest} returns this
+ */
+proto.rekam_medis.GetPatientsRequest.prototype.setMothernik = function(value) {
+  return jspb.Message.setProto3StringField(this, 8, value);
+};
+
+
+/**
+ * optional string bpjsId = 9;
+ * @return {string}
+ */
+proto.rekam_medis.GetPatientsRequest.prototype.getBpjsid = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 9, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.rekam_medis.GetPatientsRequest} returns this
+ */
+proto.rekam_medis.GetPatientsRequest.prototype.setBpjsid = function(value) {
+  return jspb.Message.setProto3StringField(this, 9, value);
+};
+
+
+/**
+ * optional string ihsNumber = 10;
+ * @return {string}
+ */
+proto.rekam_medis.GetPatientsRequest.prototype.getIhsnumber = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 10, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.rekam_medis.GetPatientsRequest} returns this
+ */
+proto.rekam_medis.GetPatientsRequest.prototype.setIhsnumber = function(value) {
+  return jspb.Message.setProto3StringField(this, 10, value);
+};
+
+
 
 /**
  * List of repeated fields within this message type.
  * @private {!Array<number>}
  * @const
  */
-proto.rekam_medis.GetPatientsResponse.repeatedFields_ = [1];
+proto.rekam_medis.GetPatientsResponse.repeatedFields_ = [4];
 
 
 
@@ -548,6 +638,9 @@ proto.rekam_medis.GetPatientsResponse.prototype.toObject = function(opt_includeI
  */
 proto.rekam_medis.GetPatientsResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
+    code: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    message: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    errormessage: jspb.Message.getFieldWithDefault(msg, 3, ""),
     patientsList: jspb.Message.toObjectList(msg.getPatientsList(),
     proto.rekam_medis.PatientData.toObject, includeInstance)
   };
@@ -587,6 +680,18 @@ proto.rekam_medis.GetPatientsResponse.deserializeBinaryFromReader = function(msg
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setCode(value);
+      break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setMessage(value);
+      break;
+    case 3:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setErrormessage(value);
+      break;
+    case 4:
       var value = new proto.rekam_medis.PatientData;
       reader.readMessage(value,proto.rekam_medis.PatientData.deserializeBinaryFromReader);
       msg.addPatients(value);
@@ -620,10 +725,31 @@ proto.rekam_medis.GetPatientsResponse.prototype.serializeBinary = function() {
  */
 proto.rekam_medis.GetPatientsResponse.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
+  f = message.getCode();
+  if (f !== 0) {
+    writer.writeInt32(
+      1,
+      f
+    );
+  }
+  f = message.getMessage();
+  if (f.length > 0) {
+    writer.writeString(
+      2,
+      f
+    );
+  }
+  f = message.getErrormessage();
+  if (f.length > 0) {
+    writer.writeString(
+      3,
+      f
+    );
+  }
   f = message.getPatientsList();
   if (f.length > 0) {
     writer.writeRepeatedMessage(
-      1,
+      4,
       f,
       proto.rekam_medis.PatientData.serializeBinaryToWriter
     );
@@ -632,12 +758,66 @@ proto.rekam_medis.GetPatientsResponse.serializeBinaryToWriter = function(message
 
 
 /**
- * repeated PatientData patients = 1;
+ * optional int32 code = 1;
+ * @return {number}
+ */
+proto.rekam_medis.GetPatientsResponse.prototype.getCode = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.rekam_medis.GetPatientsResponse} returns this
+ */
+proto.rekam_medis.GetPatientsResponse.prototype.setCode = function(value) {
+  return jspb.Message.setProto3IntField(this, 1, value);
+};
+
+
+/**
+ * optional string message = 2;
+ * @return {string}
+ */
+proto.rekam_medis.GetPatientsResponse.prototype.getMessage = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.rekam_medis.GetPatientsResponse} returns this
+ */
+proto.rekam_medis.GetPatientsResponse.prototype.setMessage = function(value) {
+  return jspb.Message.setProto3StringField(this, 2, value);
+};
+
+
+/**
+ * optional string errorMessage = 3;
+ * @return {string}
+ */
+proto.rekam_medis.GetPatientsResponse.prototype.getErrormessage = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.rekam_medis.GetPatientsResponse} returns this
+ */
+proto.rekam_medis.GetPatientsResponse.prototype.setErrormessage = function(value) {
+  return jspb.Message.setProto3StringField(this, 3, value);
+};
+
+
+/**
+ * repeated PatientData patients = 4;
  * @return {!Array<!proto.rekam_medis.PatientData>}
  */
 proto.rekam_medis.GetPatientsResponse.prototype.getPatientsList = function() {
   return /** @type{!Array<!proto.rekam_medis.PatientData>} */ (
-    jspb.Message.getRepeatedWrapperField(this, proto.rekam_medis.PatientData, 1));
+    jspb.Message.getRepeatedWrapperField(this, proto.rekam_medis.PatientData, 4));
 };
 
 
@@ -646,7 +826,7 @@ proto.rekam_medis.GetPatientsResponse.prototype.getPatientsList = function() {
  * @return {!proto.rekam_medis.GetPatientsResponse} returns this
 */
 proto.rekam_medis.GetPatientsResponse.prototype.setPatientsList = function(value) {
-  return jspb.Message.setRepeatedWrapperField(this, 1, value);
+  return jspb.Message.setRepeatedWrapperField(this, 4, value);
 };
 
 
@@ -656,7 +836,7 @@ proto.rekam_medis.GetPatientsResponse.prototype.setPatientsList = function(value
  * @return {!proto.rekam_medis.PatientData}
  */
 proto.rekam_medis.GetPatientsResponse.prototype.addPatients = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.rekam_medis.PatientData, opt_index);
+  return jspb.Message.addToRepeatedWrapperField(this, 4, opt_value, proto.rekam_medis.PatientData, opt_index);
 };
 
 

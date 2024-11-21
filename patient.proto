@@ -13,6 +13,9 @@ message GetPatientsRequest {
     string dob = 5;
     string nik = 6;
     string mrStr = 7;
+    string motherNik = 8;
+    string bpjsId = 9;
+    string ihsNumber = 10;
 }
 
 message GetPatientsResponse {
