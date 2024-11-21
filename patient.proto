@@ -16,7 +16,10 @@ message GetPatientsRequest {
 }
 
 message GetPatientsResponse {
-    repeated PatientData patients = 1;
+    int32 code = 1;
+    string message = 2;
+    string errorMessage = 3;
+    repeated PatientData patients = 4;
 }
 
 // Model definitions for Patient
