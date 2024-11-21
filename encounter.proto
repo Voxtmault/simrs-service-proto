@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option go_package = ".";
+
+package rekam_medis;
+
+// Model definitions for Encounter
+message GetEncounterDetailsRequest {
+    
+}
+
+message GetEncounterDetailsResponse {
+    
+}

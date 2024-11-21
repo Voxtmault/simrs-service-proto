@@ -1,0 +1,85 @@
+syntax = "proto3";
+
+option go_package = ".";
+
+package rekam_medis;
+
+message GetPatientsRequest {
+    int64 pageSize = 1;
+    int64 pageNumber = 2;
+    string mrNumber = 3;
+    string patientName = 4;
+    string dob = 5;
+    string nik = 6;
+    string mrStr = 7;
+}
+
+message GetPatientsResponse {
+    repeated PatientData patients = 1;
+}
+
+// Model definitions for Patient
+message HelperVar {
+    int64 id = 1;
+    string name = 2;
+}
+
+message Insurance {
+    int64 id = 1;
+    string mrNumber = 2;
+    string insuranceNumber = 3;
+    string insuranceName = 4;
+}
+
+message FamilyData {
+    int64 id = 1;
+    string mrNumber = 2;
+    string name = 3;
+    string address = 4;
+    string telephone = 5;
+    HelperVar relation = 6;
+}
+
+message CauseOfDeath {
+    string icd_10_code = 1;
+    string note = 2;
+}
+
+message Accounting {
+    int64 createBy = 1;
+    string createAt = 2;
+    int64 updateBy = 3;
+    string updateAt = 4;
+    int64 deleteBy = 5;
+    string deleteAt = 6;
+}
+
+message BloodType {
+    HelperVar bloodType = 1;
+    bool rhesus = 2;
+}
+
+message PatientData {
+    uint32 patientId = 1;
+    string mrNumber = 2;
+    string ihs_number = 3;
+    string nik = 4;
+    string mother_nik = 5;
+    string bpjs_id = 6;
+    string name = 7;
+    string dob = 8;
+    string pob = 9;
+    repeated Insurance insurances = 10;
+    string address = 11;
+    string phone = 12;
+    repeated FamilyData family_relatives = 13;
+    bool isDeceased = 14;
+    string timeOfDeath = 15;
+    CauseOfDeath causeOfDeath = 16;
+    Accounting accounting = 17;
+    HelperVar gender = 18;
+    BloodType bloddType = 19;
+    HelperVar religion = 20;
+    HelperVar marriageStatus = 21;
+    HelperVar educationLevel = 22;
+}

@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+option go_package = ".";
+
+package rekam_medis;
+
+import "encounter.proto";
+import "patient.proto";
+
+service PatientService {
+    rpc GetPatients(GetPatientsRequest) returns (GetPatientsResponse);
+}
+
+service EncounterService {
+    rpc GetEncounterDetails(GetEncounterDetailsRequest) returns (GetEncounterDetailsResponse);
+}
