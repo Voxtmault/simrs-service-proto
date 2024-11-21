@@ -1,4 +1,4 @@
-module github.com/voxtmault/rekam-medis-service-proto
+module github.com/voxtmault/simrs-service-proto
 
 go 1.22.1
 

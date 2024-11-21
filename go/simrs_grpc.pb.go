@@ -2,7 +2,7 @@
 // versions:
 // - protoc-gen-go-grpc v1.2.0
 // - protoc             v3.21.12
-// source: medical_record.proto
+// source: simrs.proto
 
 package __
 
@@ -35,7 +35,7 @@ func NewPatientServiceClient(cc grpc.ClientConnInterface) PatientServiceClient {
 
 func (c *patientServiceClient) GetPatients(ctx context.Context, in *GetPatientsRequest, opts ...grpc.CallOption) (*GetPatientsResponse, error) {
 	out := new(GetPatientsResponse)
-	err := c.cc.Invoke(ctx, "/rekam_medis.PatientService/GetPatients", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/simrs.PatientService/GetPatients", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -80,7 +80,7 @@ func _PatientService_GetPatients_Handler(srv interface{}, ctx context.Context, d
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/rekam_medis.PatientService/GetPatients",
+		FullMethod: "/simrs.PatientService/GetPatients",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(PatientServiceServer).GetPatients(ctx, req.(*GetPatientsRequest))
@@ -92,7 +92,7 @@ func _PatientService_GetPatients_Handler(srv interface{}, ctx context.Context, d
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var PatientService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "rekam_medis.PatientService",
+	ServiceName: "simrs.PatientService",
 	HandlerType: (*PatientServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
@@ -101,7 +101,7 @@ var PatientService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "medical_record.proto",
+	Metadata: "simrs.proto",
 }
 
 // EncounterServiceClient is the client API for EncounterService service.
@@ -121,7 +121,7 @@ func NewEncounterServiceClient(cc grpc.ClientConnInterface) EncounterServiceClie
 
 func (c *encounterServiceClient) GetEncounterDetails(ctx context.Context, in *GetEncounterDetailsRequest, opts ...grpc.CallOption) (*GetEncounterDetailsResponse, error) {
 	out := new(GetEncounterDetailsResponse)
-	err := c.cc.Invoke(ctx, "/rekam_medis.EncounterService/GetEncounterDetails", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/simrs.EncounterService/GetEncounterDetails", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -166,7 +166,7 @@ func _EncounterService_GetEncounterDetails_Handler(srv interface{}, ctx context.
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/rekam_medis.EncounterService/GetEncounterDetails",
+		FullMethod: "/simrs.EncounterService/GetEncounterDetails",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(EncounterServiceServer).GetEncounterDetails(ctx, req.(*GetEncounterDetailsRequest))
@@ -178,7 +178,7 @@ func _EncounterService_GetEncounterDetails_Handler(srv interface{}, ctx context.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var EncounterService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "rekam_medis.EncounterService",
+	ServiceName: "simrs.EncounterService",
 	HandlerType: (*EncounterServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
@@ -187,5 +187,91 @@ var EncounterService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "medical_record.proto",
+	Metadata: "simrs.proto",
+}
+
+// QueueServiceClient is the client API for QueueService service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type QueueServiceClient interface {
+	UpdateQueue(ctx context.Context, in *UpdateQueueRequest, opts ...grpc.CallOption) (*UpdateQueueResponse, error)
+}
+
+type queueServiceClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewQueueServiceClient(cc grpc.ClientConnInterface) QueueServiceClient {
+	return &queueServiceClient{cc}
+}
+
+func (c *queueServiceClient) UpdateQueue(ctx context.Context, in *UpdateQueueRequest, opts ...grpc.CallOption) (*UpdateQueueResponse, error) {
+	out := new(UpdateQueueResponse)
+	err := c.cc.Invoke(ctx, "/simrs.QueueService/UpdateQueue", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// QueueServiceServer is the server API for QueueService service.
+// All implementations must embed UnimplementedQueueServiceServer
+// for forward compatibility
+type QueueServiceServer interface {
+	UpdateQueue(context.Context, *UpdateQueueRequest) (*UpdateQueueResponse, error)
+	mustEmbedUnimplementedQueueServiceServer()
+}
+
+// UnimplementedQueueServiceServer must be embedded to have forward compatible implementations.
+type UnimplementedQueueServiceServer struct {
+}
+
+func (UnimplementedQueueServiceServer) UpdateQueue(context.Context, *UpdateQueueRequest) (*UpdateQueueResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateQueue not implemented")
+}
+func (UnimplementedQueueServiceServer) mustEmbedUnimplementedQueueServiceServer() {}
+
+// UnsafeQueueServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to QueueServiceServer will
+// result in compilation errors.
+type UnsafeQueueServiceServer interface {
+	mustEmbedUnimplementedQueueServiceServer()
+}
+
+func RegisterQueueServiceServer(s grpc.ServiceRegistrar, srv QueueServiceServer) {
+	s.RegisterService(&QueueService_ServiceDesc, srv)
+}
+
+func _QueueService_UpdateQueue_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateQueueRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(QueueServiceServer).UpdateQueue(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/simrs.QueueService/UpdateQueue",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(QueueServiceServer).UpdateQueue(ctx, req.(*UpdateQueueRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// QueueService_ServiceDesc is the grpc.ServiceDesc for QueueService service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var QueueService_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "simrs.QueueService",
+	HandlerType: (*QueueServiceServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "UpdateQueue",
+			Handler:    _QueueService_UpdateQueue_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "simrs.proto",
 }

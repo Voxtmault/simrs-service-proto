@@ -2,8 +2,8 @@ syntax = "proto3";
 
 option go_package = ".";
 
-package rekam_medis;
-import "accounting.proto";
+package simrs;
+import "helper.proto";
 
 message GetPatientsRequest {
     int64 pageSize = 1;
@@ -26,11 +26,6 @@ message GetPatientsResponse {
 }
 
 // Model definitions for Patient
-message HelperVar {
-    int64 id = 1;
-    string name = 2;
-}
-
 message Insurance {
     int64 id = 1;
     string mrNumber = 2;

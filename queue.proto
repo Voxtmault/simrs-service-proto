@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+option go_package = ".";
+
+package simrs;
+import "helper.proto";
+
+message UpdateQueueRequest{
+    Queue queue = 1;
+}
+message UpdateQueueResponse {
+    int32 code = 1;
+    string message = 2;
+    string errorMessage = 3;
+}
+
+// Model definitions
+message Queue {
+    int64 idQueue = 1;
+    string queueNumber = 2;
+    int64 IDEncounter = 3;
+    string mrNumber = 4;
+    HelperVar room = 5;
+    HelperVar QueueStatus = 6 ;
+    Accounting accounting = 7;
+}

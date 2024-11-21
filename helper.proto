@@ -2,7 +2,12 @@ syntax = "proto3";
 
 option go_package = ".";
 
-package rekam_medis;
+package simrs;
+
+message HelperVar {
+    int64 id = 1;
+    string name = 2;
+}
 
 message Accounting {
     int64 createBy = 1;
