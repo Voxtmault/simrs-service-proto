@@ -1751,7 +1751,8 @@ proto.simrs.PatientData.toObject = function(includeInstance, msg) {
     bloodtype: (f = msg.getBloodtype()) && proto.simrs.BloodType.toObject(includeInstance, f),
     religion: (f = msg.getReligion()) && helper_pb.HelperVar.toObject(includeInstance, f),
     marriagestatus: (f = msg.getMarriagestatus()) && helper_pb.HelperVar.toObject(includeInstance, f),
-    educationlevel: (f = msg.getEducationlevel()) && helper_pb.HelperVar.toObject(includeInstance, f)
+    educationlevel: (f = msg.getEducationlevel()) && helper_pb.HelperVar.toObject(includeInstance, f),
+    citizenship: (f = msg.getCitizenship()) && helper_pb.HelperVar.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1884,6 +1885,11 @@ proto.simrs.PatientData.deserializeBinaryFromReader = function(msg, reader) {
       var value = new helper_pb.HelperVar;
       reader.readMessage(value,helper_pb.HelperVar.deserializeBinaryFromReader);
       msg.setEducationlevel(value);
+      break;
+    case 23:
+      var value = new helper_pb.HelperVar;
+      reader.readMessage(value,helper_pb.HelperVar.deserializeBinaryFromReader);
+      msg.setCitizenship(value);
       break;
     default:
       reader.skipField();
@@ -2073,6 +2079,14 @@ proto.simrs.PatientData.serializeBinaryToWriter = function(message, writer) {
   if (f != null) {
     writer.writeMessage(
       22,
+      f,
+      helper_pb.HelperVar.serializeBinaryToWriter
+    );
+  }
+  f = message.getCitizenship();
+  if (f != null) {
+    writer.writeMessage(
+      23,
       f,
       helper_pb.HelperVar.serializeBinaryToWriter
     );
@@ -2646,6 +2660,43 @@ proto.simrs.PatientData.prototype.clearEducationlevel = function() {
  */
 proto.simrs.PatientData.prototype.hasEducationlevel = function() {
   return jspb.Message.getField(this, 22) != null;
+};
+
+
+/**
+ * optional HelperVar citizenship = 23;
+ * @return {?proto.simrs.HelperVar}
+ */
+proto.simrs.PatientData.prototype.getCitizenship = function() {
+  return /** @type{?proto.simrs.HelperVar} */ (
+    jspb.Message.getWrapperField(this, helper_pb.HelperVar, 23));
+};
+
+
+/**
+ * @param {?proto.simrs.HelperVar|undefined} value
+ * @return {!proto.simrs.PatientData} returns this
+*/
+proto.simrs.PatientData.prototype.setCitizenship = function(value) {
+  return jspb.Message.setWrapperField(this, 23, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.simrs.PatientData} returns this
+ */
+proto.simrs.PatientData.prototype.clearCitizenship = function() {
+  return this.setCitizenship(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.simrs.PatientData.prototype.hasCitizenship = function() {
+  return jspb.Message.getField(this, 23) != null;
 };
 
 
