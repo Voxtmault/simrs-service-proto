@@ -28,7 +28,7 @@ message Queue {
 message UpdateQueueXARequest {
     Queue queue = 1;
     string XAID = 2; // XA Transaction ID to join
-    string stage = 3; // Current state of the transaction, can be "start", "prepare", "commit", "rollback"
+    int32 stage = 3; // Current state of the transaction, can be "start", "prepare", "commit", "rollback"
 }
 
 message UpdateQueueXAResponse {
