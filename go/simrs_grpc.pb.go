@@ -195,6 +195,7 @@ var EncounterService_ServiceDesc = grpc.ServiceDesc{
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type QueueServiceClient interface {
 	UpdateQueue(ctx context.Context, in *UpdateQueueRequest, opts ...grpc.CallOption) (*UpdateQueueResponse, error)
+	UpdateQueueXA(ctx context.Context, opts ...grpc.CallOption) (QueueService_UpdateQueueXAClient, error)
 }
 
 type queueServiceClient struct {
@@ -214,11 +215,43 @@ func (c *queueServiceClient) UpdateQueue(ctx context.Context, in *UpdateQueueReq
 	return out, nil
 }
 
+func (c *queueServiceClient) UpdateQueueXA(ctx context.Context, opts ...grpc.CallOption) (QueueService_UpdateQueueXAClient, error) {
+	stream, err := c.cc.NewStream(ctx, &QueueService_ServiceDesc.Streams[0], "/simrs.QueueService/UpdateQueueXA", opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &queueServiceUpdateQueueXAClient{stream}
+	return x, nil
+}
+
+type QueueService_UpdateQueueXAClient interface {
+	Send(*UpdateQueueXARequest) error
+	Recv() (*UpdateQueueXAResponse, error)
+	grpc.ClientStream
+}
+
+type queueServiceUpdateQueueXAClient struct {
+	grpc.ClientStream
+}
+
+func (x *queueServiceUpdateQueueXAClient) Send(m *UpdateQueueXARequest) error {
+	return x.ClientStream.SendMsg(m)
+}
+
+func (x *queueServiceUpdateQueueXAClient) Recv() (*UpdateQueueXAResponse, error) {
+	m := new(UpdateQueueXAResponse)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
 // QueueServiceServer is the server API for QueueService service.
 // All implementations must embed UnimplementedQueueServiceServer
 // for forward compatibility
 type QueueServiceServer interface {
 	UpdateQueue(context.Context, *UpdateQueueRequest) (*UpdateQueueResponse, error)
+	UpdateQueueXA(QueueService_UpdateQueueXAServer) error
 	mustEmbedUnimplementedQueueServiceServer()
 }
 
@@ -228,6 +261,9 @@ type UnimplementedQueueServiceServer struct {
 
 func (UnimplementedQueueServiceServer) UpdateQueue(context.Context, *UpdateQueueRequest) (*UpdateQueueResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateQueue not implemented")
+}
+func (UnimplementedQueueServiceServer) UpdateQueueXA(QueueService_UpdateQueueXAServer) error {
+	return status.Errorf(codes.Unimplemented, "method UpdateQueueXA not implemented")
 }
 func (UnimplementedQueueServiceServer) mustEmbedUnimplementedQueueServiceServer() {}
 
@@ -260,6 +296,32 @@ func _QueueService_UpdateQueue_Handler(srv interface{}, ctx context.Context, dec
 	return interceptor(ctx, in, info, handler)
 }
 
+func _QueueService_UpdateQueueXA_Handler(srv interface{}, stream grpc.ServerStream) error {
+	return srv.(QueueServiceServer).UpdateQueueXA(&queueServiceUpdateQueueXAServer{stream})
+}
+
+type QueueService_UpdateQueueXAServer interface {
+	Send(*UpdateQueueXAResponse) error
+	Recv() (*UpdateQueueXARequest, error)
+	grpc.ServerStream
+}
+
+type queueServiceUpdateQueueXAServer struct {
+	grpc.ServerStream
+}
+
+func (x *queueServiceUpdateQueueXAServer) Send(m *UpdateQueueXAResponse) error {
+	return x.ServerStream.SendMsg(m)
+}
+
+func (x *queueServiceUpdateQueueXAServer) Recv() (*UpdateQueueXARequest, error) {
+	m := new(UpdateQueueXARequest)
+	if err := x.ServerStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
 // QueueService_ServiceDesc is the grpc.ServiceDesc for QueueService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -272,6 +334,13 @@ var QueueService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _QueueService_UpdateQueue_Handler,
 		},
 	},
-	Streams:  []grpc.StreamDesc{},
+	Streams: []grpc.StreamDesc{
+		{
+			StreamName:    "UpdateQueueXA",
+			Handler:       _QueueService_UpdateQueueXA_Handler,
+			ServerStreams: true,
+			ClientStreams: true,
+		},
+	},
 	Metadata: "simrs.proto",
 }

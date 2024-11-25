@@ -24,3 +24,15 @@ message Queue {
     HelperVar QueueStatus = 6 ;
     Accounting accounting = 7;
 }
+
+message UpdateQueueXARequest {
+    Queue queue = 1;
+    string XAID = 2; // XA Transaction ID to join
+    string stage = 3; // Current state of the transaction, can be "start", "prepare", "commit", "rollback"
+}
+
+message UpdateQueueXAResponse {
+    int32 code = 1;
+    string message = 2;
+    string errorMessage = 3;
+}
