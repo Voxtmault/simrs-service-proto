@@ -881,7 +881,7 @@ proto.simrs.UpdateQueueXARequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     queue: (f = msg.getQueue()) && proto.simrs.Queue.toObject(includeInstance, f),
     xaid: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    stage: jspb.Message.getFieldWithDefault(msg, 3, "")
+    stage: jspb.Message.getFieldWithDefault(msg, 3, 0)
   };
 
   if (includeInstance) {
@@ -928,7 +928,7 @@ proto.simrs.UpdateQueueXARequest.deserializeBinaryFromReader = function(msg, rea
       msg.setXaid(value);
       break;
     case 3:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {number} */ (reader.readInt32());
       msg.setStage(value);
       break;
     default:
@@ -976,8 +976,8 @@ proto.simrs.UpdateQueueXARequest.serializeBinaryToWriter = function(message, wri
     );
   }
   f = message.getStage();
-  if (f.length > 0) {
-    writer.writeString(
+  if (f !== 0) {
+    writer.writeInt32(
       3,
       f
     );
@@ -1041,20 +1041,20 @@ proto.simrs.UpdateQueueXARequest.prototype.setXaid = function(value) {
 
 
 /**
- * optional string stage = 3;
- * @return {string}
+ * optional int32 stage = 3;
+ * @return {number}
  */
 proto.simrs.UpdateQueueXARequest.prototype.getStage = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
 };
 
 
 /**
- * @param {string} value
+ * @param {number} value
  * @return {!proto.simrs.UpdateQueueXARequest} returns this
  */
 proto.simrs.UpdateQueueXARequest.prototype.setStage = function(value) {
-  return jspb.Message.setProto3StringField(this, 3, value);
+  return jspb.Message.setProto3IntField(this, 3, value);
 };
 
 
