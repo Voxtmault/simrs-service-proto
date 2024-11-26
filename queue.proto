@@ -14,6 +14,16 @@ message UpdateQueueResponse {
     string errorMessage = 3;
 }
 
+message CompensateUpdateQueueEncounterRequest {
+    int64 queueId = 1;
+    int64 actorId = 2;
+}
+message CompensateUpdateQueueEncounterResponse {
+    int32 code = 1;
+    string message = 2;
+    string errorMessage = 3;
+}
+
 // Model definitions
 message Queue {
     int64 idQueue = 1;
@@ -23,16 +33,4 @@ message Queue {
     HelperVar room = 5;
     HelperVar QueueStatus = 6 ;
     Accounting accounting = 7;
-}
-
-message UpdateQueueXARequest {
-    Queue queue = 1;
-    string XAID = 2; // XA Transaction ID to join
-    int32 stage = 3; // Current state of the transaction, can be "start", "prepare", "commit", "rollback"
-}
-
-message UpdateQueueXAResponse {
-    int32 code = 1;
-    string message = 2;
-    string errorMessage = 3;
 }

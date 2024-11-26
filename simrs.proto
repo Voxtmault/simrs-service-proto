@@ -18,5 +18,5 @@ service EncounterService {
 
 service QueueService {
     rpc UpdateQueue(UpdateQueueRequest) returns (UpdateQueueResponse);
-    rpc UpdateQueueXA(stream UpdateQueueXARequest) returns (stream UpdateQueueXAResponse);
+    rpc CompensateUpdateQueueEncounter(CompensateUpdateQueueEncounterRequest) returns (CompensateUpdateQueueEncounterResponse);
 }

@@ -367,5 +367,66 @@ proto.simrs.QueueServicePromiseClient.prototype.updateQueue =
 };
 
 
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.simrs.CompensateUpdateQueueEncounterRequest,
+ *   !proto.simrs.CompensateUpdateQueueEncounterResponse>}
+ */
+const methodDescriptor_QueueService_CompensateUpdateQueueEncounter = new grpc.web.MethodDescriptor(
+  '/simrs.QueueService/CompensateUpdateQueueEncounter',
+  grpc.web.MethodType.UNARY,
+  queue_pb.CompensateUpdateQueueEncounterRequest,
+  queue_pb.CompensateUpdateQueueEncounterResponse,
+  /**
+   * @param {!proto.simrs.CompensateUpdateQueueEncounterRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  queue_pb.CompensateUpdateQueueEncounterResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.simrs.CompensateUpdateQueueEncounterRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.simrs.CompensateUpdateQueueEncounterResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.simrs.CompensateUpdateQueueEncounterResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.simrs.QueueServiceClient.prototype.compensateUpdateQueueEncounter =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/simrs.QueueService/CompensateUpdateQueueEncounter',
+      request,
+      metadata || {},
+      methodDescriptor_QueueService_CompensateUpdateQueueEncounter,
+      callback);
+};
+
+
+/**
+ * @param {!proto.simrs.CompensateUpdateQueueEncounterRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.simrs.CompensateUpdateQueueEncounterResponse>}
+ *     Promise that resolves to the response
+ */
+proto.simrs.QueueServicePromiseClient.prototype.compensateUpdateQueueEncounter =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/simrs.QueueService/CompensateUpdateQueueEncounter',
+      request,
+      metadata || {},
+      methodDescriptor_QueueService_CompensateUpdateQueueEncounter);
+};
+
+
 module.exports = proto.simrs;
 
