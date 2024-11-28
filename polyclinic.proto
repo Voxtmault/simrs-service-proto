@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+option go_package = ".";
+
+package simrs;
+import "helper.proto";
+
+message CreatePolyclinicQueueRequest{
+    PolyclinicQueue queue = 1;
+}
+message CreatePolyclinicQueueResponse {
+    int32 code = 1;
+    string message = 2;
+    string errorMessage = 3;
+}
+
+message CompensateCreatePolyQueueEncounterRequest {
+    int64 queueId = 1;
+    int64 actorId = 2;
+}
+message CompensateCreatePolyQueueEncounterResponse {
+    int32 code = 1;
+    string message = 2;
+    string errorMessage = 3;
+}
+
+// Model definitions
+message PolyclinicQueue {
+    int64 idQueue = 1;
+    string queueNumber = 2;
+    int64 iDEncounter = 3;
+    string mrNumber = 4;
+    HelperVar room = 5;
+    HelperVar queueStatus = 6 ;
+    HelperVar generalPractitioner = 7;
+    Accounting accounting = 8;
+}

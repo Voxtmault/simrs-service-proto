@@ -311,3 +311,125 @@ var QueueService_ServiceDesc = grpc.ServiceDesc{
 	Streams:  []grpc.StreamDesc{},
 	Metadata: "simrs.proto",
 }
+
+// PolyclinicServiceClient is the client API for PolyclinicService service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type PolyclinicServiceClient interface {
+	CreatePolyclinicQueue(ctx context.Context, in *CreatePolyclinicQueueRequest, opts ...grpc.CallOption) (*CreatePolyclinicQueueResponse, error)
+	CompensateCreatePolyQueueEncounter(ctx context.Context, in *CompensateCreatePolyQueueEncounterRequest, opts ...grpc.CallOption) (*CompensateCreatePolyQueueEncounterResponse, error)
+}
+
+type polyclinicServiceClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewPolyclinicServiceClient(cc grpc.ClientConnInterface) PolyclinicServiceClient {
+	return &polyclinicServiceClient{cc}
+}
+
+func (c *polyclinicServiceClient) CreatePolyclinicQueue(ctx context.Context, in *CreatePolyclinicQueueRequest, opts ...grpc.CallOption) (*CreatePolyclinicQueueResponse, error) {
+	out := new(CreatePolyclinicQueueResponse)
+	err := c.cc.Invoke(ctx, "/simrs.PolyclinicService/CreatePolyclinicQueue", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *polyclinicServiceClient) CompensateCreatePolyQueueEncounter(ctx context.Context, in *CompensateCreatePolyQueueEncounterRequest, opts ...grpc.CallOption) (*CompensateCreatePolyQueueEncounterResponse, error) {
+	out := new(CompensateCreatePolyQueueEncounterResponse)
+	err := c.cc.Invoke(ctx, "/simrs.PolyclinicService/CompensateCreatePolyQueueEncounter", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// PolyclinicServiceServer is the server API for PolyclinicService service.
+// All implementations must embed UnimplementedPolyclinicServiceServer
+// for forward compatibility
+type PolyclinicServiceServer interface {
+	CreatePolyclinicQueue(context.Context, *CreatePolyclinicQueueRequest) (*CreatePolyclinicQueueResponse, error)
+	CompensateCreatePolyQueueEncounter(context.Context, *CompensateCreatePolyQueueEncounterRequest) (*CompensateCreatePolyQueueEncounterResponse, error)
+	mustEmbedUnimplementedPolyclinicServiceServer()
+}
+
+// UnimplementedPolyclinicServiceServer must be embedded to have forward compatible implementations.
+type UnimplementedPolyclinicServiceServer struct {
+}
+
+func (UnimplementedPolyclinicServiceServer) CreatePolyclinicQueue(context.Context, *CreatePolyclinicQueueRequest) (*CreatePolyclinicQueueResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreatePolyclinicQueue not implemented")
+}
+func (UnimplementedPolyclinicServiceServer) CompensateCreatePolyQueueEncounter(context.Context, *CompensateCreatePolyQueueEncounterRequest) (*CompensateCreatePolyQueueEncounterResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CompensateCreatePolyQueueEncounter not implemented")
+}
+func (UnimplementedPolyclinicServiceServer) mustEmbedUnimplementedPolyclinicServiceServer() {}
+
+// UnsafePolyclinicServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to PolyclinicServiceServer will
+// result in compilation errors.
+type UnsafePolyclinicServiceServer interface {
+	mustEmbedUnimplementedPolyclinicServiceServer()
+}
+
+func RegisterPolyclinicServiceServer(s grpc.ServiceRegistrar, srv PolyclinicServiceServer) {
+	s.RegisterService(&PolyclinicService_ServiceDesc, srv)
+}
+
+func _PolyclinicService_CreatePolyclinicQueue_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreatePolyclinicQueueRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(PolyclinicServiceServer).CreatePolyclinicQueue(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/simrs.PolyclinicService/CreatePolyclinicQueue",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PolyclinicServiceServer).CreatePolyclinicQueue(ctx, req.(*CreatePolyclinicQueueRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _PolyclinicService_CompensateCreatePolyQueueEncounter_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CompensateCreatePolyQueueEncounterRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(PolyclinicServiceServer).CompensateCreatePolyQueueEncounter(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/simrs.PolyclinicService/CompensateCreatePolyQueueEncounter",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PolyclinicServiceServer).CompensateCreatePolyQueueEncounter(ctx, req.(*CompensateCreatePolyQueueEncounterRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// PolyclinicService_ServiceDesc is the grpc.ServiceDesc for PolyclinicService service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var PolyclinicService_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "simrs.PolyclinicService",
+	HandlerType: (*PolyclinicServiceServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "CreatePolyclinicQueue",
+			Handler:    _PolyclinicService_CreatePolyclinicQueue_Handler,
+		},
+		{
+			MethodName: "CompensateCreatePolyQueueEncounter",
+			Handler:    _PolyclinicService_CompensateCreatePolyQueueEncounter_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "simrs.proto",
+}

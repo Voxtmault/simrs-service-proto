@@ -25,6 +25,8 @@ var encounter_pb = require('./encounter_pb.js')
 var patient_pb = require('./patient_pb.js')
 
 var queue_pb = require('./queue_pb.js')
+
+var polyclinic_pb = require('./polyclinic_pb.js')
 const proto = {};
 proto.simrs = require('./simrs_pb.js');
 
@@ -425,6 +427,180 @@ proto.simrs.QueueServicePromiseClient.prototype.compensateUpdateQueueEncounter =
       request,
       metadata || {},
       methodDescriptor_QueueService_CompensateUpdateQueueEncounter);
+};
+
+
+/**
+ * @param {string} hostname
+ * @param {?Object} credentials
+ * @param {?grpc.web.ClientOptions} options
+ * @constructor
+ * @struct
+ * @final
+ */
+proto.simrs.PolyclinicServiceClient =
+    function(hostname, credentials, options) {
+  if (!options) options = {};
+  options.format = 'text';
+
+  /**
+   * @private @const {!grpc.web.GrpcWebClientBase} The client
+   */
+  this.client_ = new grpc.web.GrpcWebClientBase(options);
+
+  /**
+   * @private @const {string} The hostname
+   */
+  this.hostname_ = hostname.replace(/\/+$/, '');
+
+};
+
+
+/**
+ * @param {string} hostname
+ * @param {?Object} credentials
+ * @param {?grpc.web.ClientOptions} options
+ * @constructor
+ * @struct
+ * @final
+ */
+proto.simrs.PolyclinicServicePromiseClient =
+    function(hostname, credentials, options) {
+  if (!options) options = {};
+  options.format = 'text';
+
+  /**
+   * @private @const {!grpc.web.GrpcWebClientBase} The client
+   */
+  this.client_ = new grpc.web.GrpcWebClientBase(options);
+
+  /**
+   * @private @const {string} The hostname
+   */
+  this.hostname_ = hostname.replace(/\/+$/, '');
+
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.simrs.CreatePolyclinicQueueRequest,
+ *   !proto.simrs.CreatePolyclinicQueueResponse>}
+ */
+const methodDescriptor_PolyclinicService_CreatePolyclinicQueue = new grpc.web.MethodDescriptor(
+  '/simrs.PolyclinicService/CreatePolyclinicQueue',
+  grpc.web.MethodType.UNARY,
+  polyclinic_pb.CreatePolyclinicQueueRequest,
+  polyclinic_pb.CreatePolyclinicQueueResponse,
+  /**
+   * @param {!proto.simrs.CreatePolyclinicQueueRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  polyclinic_pb.CreatePolyclinicQueueResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.simrs.CreatePolyclinicQueueRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.simrs.CreatePolyclinicQueueResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.simrs.CreatePolyclinicQueueResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.simrs.PolyclinicServiceClient.prototype.createPolyclinicQueue =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/simrs.PolyclinicService/CreatePolyclinicQueue',
+      request,
+      metadata || {},
+      methodDescriptor_PolyclinicService_CreatePolyclinicQueue,
+      callback);
+};
+
+
+/**
+ * @param {!proto.simrs.CreatePolyclinicQueueRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.simrs.CreatePolyclinicQueueResponse>}
+ *     Promise that resolves to the response
+ */
+proto.simrs.PolyclinicServicePromiseClient.prototype.createPolyclinicQueue =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/simrs.PolyclinicService/CreatePolyclinicQueue',
+      request,
+      metadata || {},
+      methodDescriptor_PolyclinicService_CreatePolyclinicQueue);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.simrs.CompensateCreatePolyQueueEncounterRequest,
+ *   !proto.simrs.CompensateCreatePolyQueueEncounterResponse>}
+ */
+const methodDescriptor_PolyclinicService_CompensateCreatePolyQueueEncounter = new grpc.web.MethodDescriptor(
+  '/simrs.PolyclinicService/CompensateCreatePolyQueueEncounter',
+  grpc.web.MethodType.UNARY,
+  polyclinic_pb.CompensateCreatePolyQueueEncounterRequest,
+  polyclinic_pb.CompensateCreatePolyQueueEncounterResponse,
+  /**
+   * @param {!proto.simrs.CompensateCreatePolyQueueEncounterRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  polyclinic_pb.CompensateCreatePolyQueueEncounterResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.simrs.CompensateCreatePolyQueueEncounterRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.simrs.CompensateCreatePolyQueueEncounterResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.simrs.CompensateCreatePolyQueueEncounterResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.simrs.PolyclinicServiceClient.prototype.compensateCreatePolyQueueEncounter =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/simrs.PolyclinicService/CompensateCreatePolyQueueEncounter',
+      request,
+      metadata || {},
+      methodDescriptor_PolyclinicService_CompensateCreatePolyQueueEncounter,
+      callback);
+};
+
+
+/**
+ * @param {!proto.simrs.CompensateCreatePolyQueueEncounterRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.simrs.CompensateCreatePolyQueueEncounterResponse>}
+ *     Promise that resolves to the response
+ */
+proto.simrs.PolyclinicServicePromiseClient.prototype.compensateCreatePolyQueueEncounter =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/simrs.PolyclinicService/CompensateCreatePolyQueueEncounter',
+      request,
+      metadata || {},
+      methodDescriptor_PolyclinicService_CompensateCreatePolyQueueEncounter);
 };
 
 
