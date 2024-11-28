@@ -3,12 +3,64 @@ syntax = "proto3";
 option go_package = ".";
 
 package simrs;
+import "helper.proto";
 
-// Model definitions for Encounter
 message GetEncounterDetailsRequest {
-    
+    int64 pageSize = 1;
+    int64 pageNumber = 2;
+    int64 idEncounter = 3;
+    string mrNumber = 4;
+    int32 serviceType = 5;
+    int32 encounterStatus = 6;
+    string rangeDateStart = 7;
+    string rangeDateEnd = 8;
+    string customStr = 9;
 }
 
 message GetEncounterDetailsResponse {
-    
+    int32 code = 1;
+    string message = 2;
+    string errorMessage = 3;
+    repeated Encounter encounters = 4;
+}
+
+// Model definitions for Encounter
+message Encounter {
+    int64 idEncounter = 1;
+    string mrNumber = 2;
+    string admittionDate = 3;
+    string dischargedDate = 4;
+    HelperVar paymentMethod = 5;
+    HelperVar entryMethod = 6;
+    HelperVar encounterStatus = 7;
+    HelperVar encounterType = 8;
+    repeated EncounterRoomHistory roomHistory = 9;
+    repeated EncounterUpdateStatusLog statusLog = 10;
+    EncounterPersonInCharge pic = 11;
+    string note = 12;
+    Accounting accounting = 13;
+}
+
+message EncounterRoomHistory {
+    int64 id = 1;
+    int64 idEncounter = 2;
+    HelperVar room = 3;
+    string admittionDate = 4;
+    string DischargeDate = 5;
+    string sep = 6;
+    Accounting accounting = 7;
+}
+
+message EncounterUpdateStatusLog {
+    int64 id = 1;
+    int64 idEncounter = 2;
+    HelperVar room = 3;
+    HelperVar encounterStatus = 4;
+    Accounting accounting = 5;
+}
+
+message EncounterPersonInCharge {
+    string name = 1;
+    string phone = 2;
+    HelperVar relation = 3;
 }
