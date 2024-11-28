@@ -27,7 +27,7 @@ message CompensateCreatePolyQueueEncounterResponse {
 // Model definitions
 message PolyclinicQueue {
     int64 idQueue = 1;
-    string queueNumber = 2;
+    int64 queueNumber = 2;
     int64 iDEncounter = 3;
     string mrNumber = 4;
     HelperVar room = 5;
