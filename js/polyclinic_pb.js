@@ -857,7 +857,7 @@ proto.simrs.PolyclinicQueue.prototype.toObject = function(opt_includeInstance) {
 proto.simrs.PolyclinicQueue.toObject = function(includeInstance, msg) {
   var f, obj = {
     idqueue: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    queuenumber: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    queuenumber: jspb.Message.getFieldWithDefault(msg, 2, 0),
     idencounter: jspb.Message.getFieldWithDefault(msg, 3, 0),
     mrnumber: jspb.Message.getFieldWithDefault(msg, 4, ""),
     room: (f = msg.getRoom()) && helper_pb.HelperVar.toObject(includeInstance, f),
@@ -905,7 +905,7 @@ proto.simrs.PolyclinicQueue.deserializeBinaryFromReader = function(msg, reader) 
       msg.setIdqueue(value);
       break;
     case 2:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {number} */ (reader.readInt64());
       msg.setQueuenumber(value);
       break;
     case 3:
@@ -973,8 +973,8 @@ proto.simrs.PolyclinicQueue.serializeBinaryToWriter = function(message, writer) 
     );
   }
   f = message.getQueuenumber();
-  if (f.length > 0) {
-    writer.writeString(
+  if (f !== 0) {
+    writer.writeInt64(
       2,
       f
     );
@@ -1047,20 +1047,20 @@ proto.simrs.PolyclinicQueue.prototype.setIdqueue = function(value) {
 
 
 /**
- * optional string queueNumber = 2;
- * @return {string}
+ * optional int64 queueNumber = 2;
+ * @return {number}
  */
 proto.simrs.PolyclinicQueue.prototype.getQueuenumber = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
 };
 
 
 /**
- * @param {string} value
+ * @param {number} value
  * @return {!proto.simrs.PolyclinicQueue} returns this
  */
 proto.simrs.PolyclinicQueue.prototype.setQueuenumber = function(value) {
-  return jspb.Message.setProto3StringField(this, 2, value);
+  return jspb.Message.setProto3IntField(this, 2, value);
 };
 
 
