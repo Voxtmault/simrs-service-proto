@@ -18,10 +18,8 @@ message GetEncounterDetailsRequest {
 }
 
 message GetEncounterDetailsResponse {
-    int32 code = 1;
-    string message = 2;
-    string errorMessage = 3;
-    repeated Encounter encounters = 4;
+    GenericEncounterServiceResponse genericResponse = 1;
+    repeated Encounter encounters = 2;
 }
 
 message AddEncounterRoomHistoryRequest {
@@ -31,10 +29,9 @@ message AddEncounterRoomHistoryRequest {
     string optionalNote = 4;
 }
 
-message AddEncounterRoomHistoryResponse {
-    int32 code = 1;
-    string message = 2;
-    string errorMessage = 3;
+message DeleteEncounterRoomHistoryRequest {
+    int64 idEncounter = 1;
+    int64 idRoom = 2;
 }
 
 // Model definitions for Encounter
@@ -76,4 +73,11 @@ message EncounterPersonInCharge {
     string name = 1;
     string phone = 2;
     HelperVar relation = 3;
+}
+
+// Generic Encounter Service Response
+message GenericEncounterServiceResponse {
+    int32 code = 1;
+    string message = 2;
+    string errorMessage = 3;
 }

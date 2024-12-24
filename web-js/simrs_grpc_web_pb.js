@@ -260,13 +260,13 @@ proto.simrs.EncounterServicePromiseClient.prototype.getEncounterDetails =
  * @const
  * @type {!grpc.web.MethodDescriptor<
  *   !proto.simrs.AddEncounterRoomHistoryRequest,
- *   !proto.simrs.AddEncounterRoomHistoryResponse>}
+ *   !proto.simrs.GenericEncounterServiceResponse>}
  */
 const methodDescriptor_EncounterService_AddEncounterRoomHistory = new grpc.web.MethodDescriptor(
   '/simrs.EncounterService/AddEncounterRoomHistory',
   grpc.web.MethodType.UNARY,
   encounter_pb.AddEncounterRoomHistoryRequest,
-  encounter_pb.AddEncounterRoomHistoryResponse,
+  encounter_pb.GenericEncounterServiceResponse,
   /**
    * @param {!proto.simrs.AddEncounterRoomHistoryRequest} request
    * @return {!Uint8Array}
@@ -274,7 +274,7 @@ const methodDescriptor_EncounterService_AddEncounterRoomHistory = new grpc.web.M
   function(request) {
     return request.serializeBinary();
   },
-  encounter_pb.AddEncounterRoomHistoryResponse.deserializeBinary
+  encounter_pb.GenericEncounterServiceResponse.deserializeBinary
 );
 
 
@@ -283,9 +283,9 @@ const methodDescriptor_EncounterService_AddEncounterRoomHistory = new grpc.web.M
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.simrs.AddEncounterRoomHistoryResponse)}
+ * @param {function(?grpc.web.RpcError, ?proto.simrs.GenericEncounterServiceResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.simrs.AddEncounterRoomHistoryResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.simrs.GenericEncounterServiceResponse>|undefined}
  *     The XHR Node Readable Stream
  */
 proto.simrs.EncounterServiceClient.prototype.addEncounterRoomHistory =
@@ -304,7 +304,7 @@ proto.simrs.EncounterServiceClient.prototype.addEncounterRoomHistory =
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.simrs.AddEncounterRoomHistoryResponse>}
+ * @return {!Promise<!proto.simrs.GenericEncounterServiceResponse>}
  *     Promise that resolves to the response
  */
 proto.simrs.EncounterServicePromiseClient.prototype.addEncounterRoomHistory =
@@ -314,6 +314,67 @@ proto.simrs.EncounterServicePromiseClient.prototype.addEncounterRoomHistory =
       request,
       metadata || {},
       methodDescriptor_EncounterService_AddEncounterRoomHistory);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.simrs.DeleteEncounterRoomHistoryRequest,
+ *   !proto.simrs.GenericEncounterServiceResponse>}
+ */
+const methodDescriptor_EncounterService_DeleteEncounterRoomHistory = new grpc.web.MethodDescriptor(
+  '/simrs.EncounterService/DeleteEncounterRoomHistory',
+  grpc.web.MethodType.UNARY,
+  encounter_pb.DeleteEncounterRoomHistoryRequest,
+  encounter_pb.GenericEncounterServiceResponse,
+  /**
+   * @param {!proto.simrs.DeleteEncounterRoomHistoryRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  encounter_pb.GenericEncounterServiceResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.simrs.DeleteEncounterRoomHistoryRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.simrs.GenericEncounterServiceResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.simrs.GenericEncounterServiceResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.simrs.EncounterServiceClient.prototype.deleteEncounterRoomHistory =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/simrs.EncounterService/DeleteEncounterRoomHistory',
+      request,
+      metadata || {},
+      methodDescriptor_EncounterService_DeleteEncounterRoomHistory,
+      callback);
+};
+
+
+/**
+ * @param {!proto.simrs.DeleteEncounterRoomHistoryRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.simrs.GenericEncounterServiceResponse>}
+ *     Promise that resolves to the response
+ */
+proto.simrs.EncounterServicePromiseClient.prototype.deleteEncounterRoomHistory =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/simrs.EncounterService/DeleteEncounterRoomHistory',
+      request,
+      metadata || {},
+      methodDescriptor_EncounterService_DeleteEncounterRoomHistory);
 };
 
 

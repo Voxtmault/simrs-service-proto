@@ -32,7 +32,7 @@ var file_simrs_proto_rawDesc = []byte{
 	0x65, 0x6e, 0x74, 0x73, 0x12, 0x19, 0x2e, 0x73, 0x69, 0x6d, 0x72, 0x73, 0x2e, 0x47, 0x65, 0x74,
 	0x50, 0x61, 0x74, 0x69, 0x65, 0x6e, 0x74, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a,
 	0x1a, 0x2e, 0x73, 0x69, 0x6d, 0x72, 0x73, 0x2e, 0x47, 0x65, 0x74, 0x50, 0x61, 0x74, 0x69, 0x65,
-	0x6e, 0x74, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x32, 0xda, 0x01, 0x0a, 0x10,
+	0x6e, 0x74, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x32, 0xca, 0x02, 0x0a, 0x10,
 	0x45, 0x6e, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65,
 	0x12, 0x5c, 0x0a, 0x13, 0x47, 0x65, 0x74, 0x45, 0x6e, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x65, 0x72,
 	0x44, 0x65, 0x74, 0x61, 0x69, 0x6c, 0x73, 0x12, 0x21, 0x2e, 0x73, 0x69, 0x6d, 0x72, 0x73, 0x2e,
@@ -44,8 +44,15 @@ var file_simrs_proto_rawDesc = []byte{
 	0x6f, 0x6d, 0x48, 0x69, 0x73, 0x74, 0x6f, 0x72, 0x79, 0x12, 0x25, 0x2e, 0x73, 0x69, 0x6d, 0x72,
 	0x73, 0x2e, 0x41, 0x64, 0x64, 0x45, 0x6e, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x65, 0x72, 0x52, 0x6f,
 	0x6f, 0x6d, 0x48, 0x69, 0x73, 0x74, 0x6f, 0x72, 0x79, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74,
-	0x1a, 0x26, 0x2e, 0x73, 0x69, 0x6d, 0x72, 0x73, 0x2e, 0x41, 0x64, 0x64, 0x45, 0x6e, 0x63, 0x6f,
-	0x75, 0x6e, 0x74, 0x65, 0x72, 0x52, 0x6f, 0x6f, 0x6d, 0x48, 0x69, 0x73, 0x74, 0x6f, 0x72, 0x79,
+	0x1a, 0x26, 0x2e, 0x73, 0x69, 0x6d, 0x72, 0x73, 0x2e, 0x47, 0x65, 0x6e, 0x65, 0x72, 0x69, 0x63,
+	0x45, 0x6e, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65,
+	0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x6e, 0x0a, 0x1a, 0x44, 0x65, 0x6c, 0x65,
+	0x74, 0x65, 0x45, 0x6e, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x65, 0x72, 0x52, 0x6f, 0x6f, 0x6d, 0x48,
+	0x69, 0x73, 0x74, 0x6f, 0x72, 0x79, 0x12, 0x28, 0x2e, 0x73, 0x69, 0x6d, 0x72, 0x73, 0x2e, 0x44,
+	0x65, 0x6c, 0x65, 0x74, 0x65, 0x45, 0x6e, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x65, 0x72, 0x52, 0x6f,
+	0x6f, 0x6d, 0x48, 0x69, 0x73, 0x74, 0x6f, 0x72, 0x79, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74,
+	0x1a, 0x26, 0x2e, 0x73, 0x69, 0x6d, 0x72, 0x73, 0x2e, 0x47, 0x65, 0x6e, 0x65, 0x72, 0x69, 0x63,
+	0x45, 0x6e, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65,
 	0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x32, 0xd3, 0x01, 0x0a, 0x0c, 0x51, 0x75, 0x65,
 	0x75, 0x65, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x44, 0x0a, 0x0b, 0x55, 0x70, 0x64,
 	0x61, 0x74, 0x65, 0x51, 0x75, 0x65, 0x75, 0x65, 0x12, 0x19, 0x2e, 0x73, 0x69, 0x6d, 0x72, 0x73,
@@ -84,35 +91,38 @@ var file_simrs_proto_goTypes = []interface{}{
 	(*GetPatientsRequest)(nil),                         // 0: simrs.GetPatientsRequest
 	(*GetEncounterDetailsRequest)(nil),                 // 1: simrs.GetEncounterDetailsRequest
 	(*AddEncounterRoomHistoryRequest)(nil),             // 2: simrs.AddEncounterRoomHistoryRequest
-	(*UpdateQueueRequest)(nil),                         // 3: simrs.UpdateQueueRequest
-	(*CompensateUpdateQueueEncounterRequest)(nil),      // 4: simrs.CompensateUpdateQueueEncounterRequest
-	(*CreatePolyclinicQueueRequest)(nil),               // 5: simrs.CreatePolyclinicQueueRequest
-	(*CompensateCreatePolyQueueEncounterRequest)(nil),  // 6: simrs.CompensateCreatePolyQueueEncounterRequest
-	(*GetPatientsResponse)(nil),                        // 7: simrs.GetPatientsResponse
-	(*GetEncounterDetailsResponse)(nil),                // 8: simrs.GetEncounterDetailsResponse
-	(*AddEncounterRoomHistoryResponse)(nil),            // 9: simrs.AddEncounterRoomHistoryResponse
-	(*UpdateQueueResponse)(nil),                        // 10: simrs.UpdateQueueResponse
-	(*CompensateUpdateQueueEncounterResponse)(nil),     // 11: simrs.CompensateUpdateQueueEncounterResponse
-	(*CreatePolyclinicQueueResponse)(nil),              // 12: simrs.CreatePolyclinicQueueResponse
-	(*CompensateCreatePolyQueueEncounterResponse)(nil), // 13: simrs.CompensateCreatePolyQueueEncounterResponse
+	(*DeleteEncounterRoomHistoryRequest)(nil),          // 3: simrs.DeleteEncounterRoomHistoryRequest
+	(*UpdateQueueRequest)(nil),                         // 4: simrs.UpdateQueueRequest
+	(*CompensateUpdateQueueEncounterRequest)(nil),      // 5: simrs.CompensateUpdateQueueEncounterRequest
+	(*CreatePolyclinicQueueRequest)(nil),               // 6: simrs.CreatePolyclinicQueueRequest
+	(*CompensateCreatePolyQueueEncounterRequest)(nil),  // 7: simrs.CompensateCreatePolyQueueEncounterRequest
+	(*GetPatientsResponse)(nil),                        // 8: simrs.GetPatientsResponse
+	(*GetEncounterDetailsResponse)(nil),                // 9: simrs.GetEncounterDetailsResponse
+	(*GenericEncounterServiceResponse)(nil),            // 10: simrs.GenericEncounterServiceResponse
+	(*UpdateQueueResponse)(nil),                        // 11: simrs.UpdateQueueResponse
+	(*CompensateUpdateQueueEncounterResponse)(nil),     // 12: simrs.CompensateUpdateQueueEncounterResponse
+	(*CreatePolyclinicQueueResponse)(nil),              // 13: simrs.CreatePolyclinicQueueResponse
+	(*CompensateCreatePolyQueueEncounterResponse)(nil), // 14: simrs.CompensateCreatePolyQueueEncounterResponse
 }
 var file_simrs_proto_depIdxs = []int32{
 	0,  // 0: simrs.PatientService.GetPatients:input_type -> simrs.GetPatientsRequest
 	1,  // 1: simrs.EncounterService.GetEncounterDetails:input_type -> simrs.GetEncounterDetailsRequest
 	2,  // 2: simrs.EncounterService.AddEncounterRoomHistory:input_type -> simrs.AddEncounterRoomHistoryRequest
-	3,  // 3: simrs.QueueService.UpdateQueue:input_type -> simrs.UpdateQueueRequest
-	4,  // 4: simrs.QueueService.CompensateUpdateQueueEncounter:input_type -> simrs.CompensateUpdateQueueEncounterRequest
-	5,  // 5: simrs.PolyclinicService.CreatePolyclinicQueue:input_type -> simrs.CreatePolyclinicQueueRequest
-	6,  // 6: simrs.PolyclinicService.CompensateCreatePolyQueueEncounter:input_type -> simrs.CompensateCreatePolyQueueEncounterRequest
-	7,  // 7: simrs.PatientService.GetPatients:output_type -> simrs.GetPatientsResponse
-	8,  // 8: simrs.EncounterService.GetEncounterDetails:output_type -> simrs.GetEncounterDetailsResponse
-	9,  // 9: simrs.EncounterService.AddEncounterRoomHistory:output_type -> simrs.AddEncounterRoomHistoryResponse
-	10, // 10: simrs.QueueService.UpdateQueue:output_type -> simrs.UpdateQueueResponse
-	11, // 11: simrs.QueueService.CompensateUpdateQueueEncounter:output_type -> simrs.CompensateUpdateQueueEncounterResponse
-	12, // 12: simrs.PolyclinicService.CreatePolyclinicQueue:output_type -> simrs.CreatePolyclinicQueueResponse
-	13, // 13: simrs.PolyclinicService.CompensateCreatePolyQueueEncounter:output_type -> simrs.CompensateCreatePolyQueueEncounterResponse
-	7,  // [7:14] is the sub-list for method output_type
-	0,  // [0:7] is the sub-list for method input_type
+	3,  // 3: simrs.EncounterService.DeleteEncounterRoomHistory:input_type -> simrs.DeleteEncounterRoomHistoryRequest
+	4,  // 4: simrs.QueueService.UpdateQueue:input_type -> simrs.UpdateQueueRequest
+	5,  // 5: simrs.QueueService.CompensateUpdateQueueEncounter:input_type -> simrs.CompensateUpdateQueueEncounterRequest
+	6,  // 6: simrs.PolyclinicService.CreatePolyclinicQueue:input_type -> simrs.CreatePolyclinicQueueRequest
+	7,  // 7: simrs.PolyclinicService.CompensateCreatePolyQueueEncounter:input_type -> simrs.CompensateCreatePolyQueueEncounterRequest
+	8,  // 8: simrs.PatientService.GetPatients:output_type -> simrs.GetPatientsResponse
+	9,  // 9: simrs.EncounterService.GetEncounterDetails:output_type -> simrs.GetEncounterDetailsResponse
+	10, // 10: simrs.EncounterService.AddEncounterRoomHistory:output_type -> simrs.GenericEncounterServiceResponse
+	10, // 11: simrs.EncounterService.DeleteEncounterRoomHistory:output_type -> simrs.GenericEncounterServiceResponse
+	11, // 12: simrs.QueueService.UpdateQueue:output_type -> simrs.UpdateQueueResponse
+	12, // 13: simrs.QueueService.CompensateUpdateQueueEncounter:output_type -> simrs.CompensateUpdateQueueEncounterResponse
+	13, // 14: simrs.PolyclinicService.CreatePolyclinicQueue:output_type -> simrs.CreatePolyclinicQueueResponse
+	14, // 15: simrs.PolyclinicService.CompensateCreatePolyQueueEncounter:output_type -> simrs.CompensateCreatePolyQueueEncounterResponse
+	8,  // [8:16] is the sub-list for method output_type
+	0,  // [0:8] is the sub-list for method input_type
 	0,  // [0:0] is the sub-list for extension type_name
 	0,  // [0:0] is the sub-list for extension extendee
 	0,  // [0:0] is the sub-list for field type_name
