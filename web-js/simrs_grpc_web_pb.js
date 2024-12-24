@@ -257,6 +257,67 @@ proto.simrs.EncounterServicePromiseClient.prototype.getEncounterDetails =
 
 
 /**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.simrs.AddEncounterRoomHistoryRequest,
+ *   !proto.simrs.AddEncounterRoomHistoryResponse>}
+ */
+const methodDescriptor_EncounterService_AddEncounterRoomHistory = new grpc.web.MethodDescriptor(
+  '/simrs.EncounterService/AddEncounterRoomHistory',
+  grpc.web.MethodType.UNARY,
+  encounter_pb.AddEncounterRoomHistoryRequest,
+  encounter_pb.AddEncounterRoomHistoryResponse,
+  /**
+   * @param {!proto.simrs.AddEncounterRoomHistoryRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  encounter_pb.AddEncounterRoomHistoryResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.simrs.AddEncounterRoomHistoryRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.simrs.AddEncounterRoomHistoryResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.simrs.AddEncounterRoomHistoryResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.simrs.EncounterServiceClient.prototype.addEncounterRoomHistory =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/simrs.EncounterService/AddEncounterRoomHistory',
+      request,
+      metadata || {},
+      methodDescriptor_EncounterService_AddEncounterRoomHistory,
+      callback);
+};
+
+
+/**
+ * @param {!proto.simrs.AddEncounterRoomHistoryRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.simrs.AddEncounterRoomHistoryResponse>}
+ *     Promise that resolves to the response
+ */
+proto.simrs.EncounterServicePromiseClient.prototype.addEncounterRoomHistory =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/simrs.EncounterService/AddEncounterRoomHistory',
+      request,
+      metadata || {},
+      methodDescriptor_EncounterService_AddEncounterRoomHistory);
+};
+
+
+/**
  * @param {string} hostname
  * @param {?Object} credentials
  * @param {?grpc.web.ClientOptions} options

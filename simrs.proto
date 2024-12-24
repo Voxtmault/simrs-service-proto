@@ -15,6 +15,7 @@ service PatientService {
 
 service EncounterService {
     rpc GetEncounterDetails(GetEncounterDetailsRequest) returns (GetEncounterDetailsResponse);
+    rpc AddEncounterRoomHistory(AddEncounterRoomHistoryRequest) returns (AddEncounterRoomHistoryResponse);
 }
 
 service QueueService {

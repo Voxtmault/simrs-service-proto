@@ -109,6 +109,7 @@ var PatientService_ServiceDesc = grpc.ServiceDesc{
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type EncounterServiceClient interface {
 	GetEncounterDetails(ctx context.Context, in *GetEncounterDetailsRequest, opts ...grpc.CallOption) (*GetEncounterDetailsResponse, error)
+	AddEncounterRoomHistory(ctx context.Context, in *AddEncounterRoomHistoryRequest, opts ...grpc.CallOption) (*AddEncounterRoomHistoryResponse, error)
 }
 
 type encounterServiceClient struct {
@@ -128,11 +129,21 @@ func (c *encounterServiceClient) GetEncounterDetails(ctx context.Context, in *Ge
 	return out, nil
 }
 
+func (c *encounterServiceClient) AddEncounterRoomHistory(ctx context.Context, in *AddEncounterRoomHistoryRequest, opts ...grpc.CallOption) (*AddEncounterRoomHistoryResponse, error) {
+	out := new(AddEncounterRoomHistoryResponse)
+	err := c.cc.Invoke(ctx, "/simrs.EncounterService/AddEncounterRoomHistory", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // EncounterServiceServer is the server API for EncounterService service.
 // All implementations must embed UnimplementedEncounterServiceServer
 // for forward compatibility
 type EncounterServiceServer interface {
 	GetEncounterDetails(context.Context, *GetEncounterDetailsRequest) (*GetEncounterDetailsResponse, error)
+	AddEncounterRoomHistory(context.Context, *AddEncounterRoomHistoryRequest) (*AddEncounterRoomHistoryResponse, error)
 	mustEmbedUnimplementedEncounterServiceServer()
 }
 
@@ -142,6 +153,9 @@ type UnimplementedEncounterServiceServer struct {
 
 func (UnimplementedEncounterServiceServer) GetEncounterDetails(context.Context, *GetEncounterDetailsRequest) (*GetEncounterDetailsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetEncounterDetails not implemented")
+}
+func (UnimplementedEncounterServiceServer) AddEncounterRoomHistory(context.Context, *AddEncounterRoomHistoryRequest) (*AddEncounterRoomHistoryResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AddEncounterRoomHistory not implemented")
 }
 func (UnimplementedEncounterServiceServer) mustEmbedUnimplementedEncounterServiceServer() {}
 
@@ -174,6 +188,24 @@ func _EncounterService_GetEncounterDetails_Handler(srv interface{}, ctx context.
 	return interceptor(ctx, in, info, handler)
 }
 
+func _EncounterService_AddEncounterRoomHistory_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AddEncounterRoomHistoryRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(EncounterServiceServer).AddEncounterRoomHistory(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/simrs.EncounterService/AddEncounterRoomHistory",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(EncounterServiceServer).AddEncounterRoomHistory(ctx, req.(*AddEncounterRoomHistoryRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // EncounterService_ServiceDesc is the grpc.ServiceDesc for EncounterService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -184,6 +216,10 @@ var EncounterService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetEncounterDetails",
 			Handler:    _EncounterService_GetEncounterDetails_Handler,
+		},
+		{
+			MethodName: "AddEncounterRoomHistory",
+			Handler:    _EncounterService_AddEncounterRoomHistory_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

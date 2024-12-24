@@ -24,6 +24,19 @@ message GetEncounterDetailsResponse {
     repeated Encounter encounters = 4;
 }
 
+message AddEncounterRoomHistoryRequest {
+    int64 idEncounter = 1;
+    int64 idRoom = 2;
+    int64 idActor = 3;
+    string optionalNote = 4;
+}
+
+message AddEncounterRoomHistoryResponse {
+    int32 code = 1;
+    string message = 2;
+    string errorMessage = 3;
+}
+
 // Model definitions for Encounter
 message Encounter {
     int64 idEncounter = 1;

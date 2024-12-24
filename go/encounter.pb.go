@@ -202,6 +202,140 @@ func (x *GetEncounterDetailsResponse) GetEncounters() []*Encounter {
 	return nil
 }
 
+type AddEncounterRoomHistoryRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	IdEncounter  int64  `protobuf:"varint,1,opt,name=idEncounter,proto3" json:"idEncounter,omitempty"`
+	IdRoom       int64  `protobuf:"varint,2,opt,name=idRoom,proto3" json:"idRoom,omitempty"`
+	IdActor      int64  `protobuf:"varint,3,opt,name=idActor,proto3" json:"idActor,omitempty"`
+	OptionalNote string `protobuf:"bytes,4,opt,name=optionalNote,proto3" json:"optionalNote,omitempty"`
+}
+
+func (x *AddEncounterRoomHistoryRequest) Reset() {
+	*x = AddEncounterRoomHistoryRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_encounter_proto_msgTypes[2]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *AddEncounterRoomHistoryRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AddEncounterRoomHistoryRequest) ProtoMessage() {}
+
+func (x *AddEncounterRoomHistoryRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_encounter_proto_msgTypes[2]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AddEncounterRoomHistoryRequest.ProtoReflect.Descriptor instead.
+func (*AddEncounterRoomHistoryRequest) Descriptor() ([]byte, []int) {
+	return file_encounter_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *AddEncounterRoomHistoryRequest) GetIdEncounter() int64 {
+	if x != nil {
+		return x.IdEncounter
+	}
+	return 0
+}
+
+func (x *AddEncounterRoomHistoryRequest) GetIdRoom() int64 {
+	if x != nil {
+		return x.IdRoom
+	}
+	return 0
+}
+
+func (x *AddEncounterRoomHistoryRequest) GetIdActor() int64 {
+	if x != nil {
+		return x.IdActor
+	}
+	return 0
+}
+
+func (x *AddEncounterRoomHistoryRequest) GetOptionalNote() string {
+	if x != nil {
+		return x.OptionalNote
+	}
+	return ""
+}
+
+type AddEncounterRoomHistoryResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Code         int32  `protobuf:"varint,1,opt,name=code,proto3" json:"code,omitempty"`
+	Message      string `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"`
+	ErrorMessage string `protobuf:"bytes,3,opt,name=errorMessage,proto3" json:"errorMessage,omitempty"`
+}
+
+func (x *AddEncounterRoomHistoryResponse) Reset() {
+	*x = AddEncounterRoomHistoryResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_encounter_proto_msgTypes[3]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *AddEncounterRoomHistoryResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AddEncounterRoomHistoryResponse) ProtoMessage() {}
+
+func (x *AddEncounterRoomHistoryResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_encounter_proto_msgTypes[3]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AddEncounterRoomHistoryResponse.ProtoReflect.Descriptor instead.
+func (*AddEncounterRoomHistoryResponse) Descriptor() ([]byte, []int) {
+	return file_encounter_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *AddEncounterRoomHistoryResponse) GetCode() int32 {
+	if x != nil {
+		return x.Code
+	}
+	return 0
+}
+
+func (x *AddEncounterRoomHistoryResponse) GetMessage() string {
+	if x != nil {
+		return x.Message
+	}
+	return ""
+}
+
+func (x *AddEncounterRoomHistoryResponse) GetErrorMessage() string {
+	if x != nil {
+		return x.ErrorMessage
+	}
+	return ""
+}
+
 // Model definitions for Encounter
 type Encounter struct {
 	state         protoimpl.MessageState
@@ -226,7 +360,7 @@ type Encounter struct {
 func (x *Encounter) Reset() {
 	*x = Encounter{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_encounter_proto_msgTypes[2]
+		mi := &file_encounter_proto_msgTypes[4]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -239,7 +373,7 @@ func (x *Encounter) String() string {
 func (*Encounter) ProtoMessage() {}
 
 func (x *Encounter) ProtoReflect() protoreflect.Message {
-	mi := &file_encounter_proto_msgTypes[2]
+	mi := &file_encounter_proto_msgTypes[4]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -252,7 +386,7 @@ func (x *Encounter) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Encounter.ProtoReflect.Descriptor instead.
 func (*Encounter) Descriptor() ([]byte, []int) {
-	return file_encounter_proto_rawDescGZIP(), []int{2}
+	return file_encounter_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *Encounter) GetIdEncounter() int64 {
@@ -363,7 +497,7 @@ type EncounterRoomHistory struct {
 func (x *EncounterRoomHistory) Reset() {
 	*x = EncounterRoomHistory{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_encounter_proto_msgTypes[3]
+		mi := &file_encounter_proto_msgTypes[5]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -376,7 +510,7 @@ func (x *EncounterRoomHistory) String() string {
 func (*EncounterRoomHistory) ProtoMessage() {}
 
 func (x *EncounterRoomHistory) ProtoReflect() protoreflect.Message {
-	mi := &file_encounter_proto_msgTypes[3]
+	mi := &file_encounter_proto_msgTypes[5]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -389,7 +523,7 @@ func (x *EncounterRoomHistory) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use EncounterRoomHistory.ProtoReflect.Descriptor instead.
 func (*EncounterRoomHistory) Descriptor() ([]byte, []int) {
-	return file_encounter_proto_rawDescGZIP(), []int{3}
+	return file_encounter_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *EncounterRoomHistory) GetId() int64 {
@@ -456,7 +590,7 @@ type EncounterUpdateStatusLog struct {
 func (x *EncounterUpdateStatusLog) Reset() {
 	*x = EncounterUpdateStatusLog{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_encounter_proto_msgTypes[4]
+		mi := &file_encounter_proto_msgTypes[6]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -469,7 +603,7 @@ func (x *EncounterUpdateStatusLog) String() string {
 func (*EncounterUpdateStatusLog) ProtoMessage() {}
 
 func (x *EncounterUpdateStatusLog) ProtoReflect() protoreflect.Message {
-	mi := &file_encounter_proto_msgTypes[4]
+	mi := &file_encounter_proto_msgTypes[6]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -482,7 +616,7 @@ func (x *EncounterUpdateStatusLog) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use EncounterUpdateStatusLog.ProtoReflect.Descriptor instead.
 func (*EncounterUpdateStatusLog) Descriptor() ([]byte, []int) {
-	return file_encounter_proto_rawDescGZIP(), []int{4}
+	return file_encounter_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *EncounterUpdateStatusLog) GetId() int64 {
@@ -533,7 +667,7 @@ type EncounterPersonInCharge struct {
 func (x *EncounterPersonInCharge) Reset() {
 	*x = EncounterPersonInCharge{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_encounter_proto_msgTypes[5]
+		mi := &file_encounter_proto_msgTypes[7]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -546,7 +680,7 @@ func (x *EncounterPersonInCharge) String() string {
 func (*EncounterPersonInCharge) ProtoMessage() {}
 
 func (x *EncounterPersonInCharge) ProtoReflect() protoreflect.Message {
-	mi := &file_encounter_proto_msgTypes[5]
+	mi := &file_encounter_proto_msgTypes[7]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -559,7 +693,7 @@ func (x *EncounterPersonInCharge) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use EncounterPersonInCharge.ProtoReflect.Descriptor instead.
 func (*EncounterPersonInCharge) Descriptor() ([]byte, []int) {
-	return file_encounter_proto_rawDescGZIP(), []int{5}
+	return file_encounter_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *EncounterPersonInCharge) GetName() string {
@@ -619,7 +753,24 @@ var file_encounter_proto_rawDesc = []byte{
 	0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x12, 0x30, 0x0a, 0x0a, 0x65, 0x6e, 0x63, 0x6f, 0x75,
 	0x6e, 0x74, 0x65, 0x72, 0x73, 0x18, 0x04, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x10, 0x2e, 0x73, 0x69,
 	0x6d, 0x72, 0x73, 0x2e, 0x45, 0x6e, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x65, 0x72, 0x52, 0x0a, 0x65,
-	0x6e, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x65, 0x72, 0x73, 0x22, 0xee, 0x04, 0x0a, 0x09, 0x45, 0x6e,
+	0x6e, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x65, 0x72, 0x73, 0x22, 0x98, 0x01, 0x0a, 0x1e, 0x41, 0x64,
+	0x64, 0x45, 0x6e, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x65, 0x72, 0x52, 0x6f, 0x6f, 0x6d, 0x48, 0x69,
+	0x73, 0x74, 0x6f, 0x72, 0x79, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x20, 0x0a, 0x0b,
+	0x69, 0x64, 0x45, 0x6e, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x65, 0x72, 0x18, 0x01, 0x20, 0x01, 0x28,
+	0x03, 0x52, 0x0b, 0x69, 0x64, 0x45, 0x6e, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x65, 0x72, 0x12, 0x16,
+	0x0a, 0x06, 0x69, 0x64, 0x52, 0x6f, 0x6f, 0x6d, 0x18, 0x02, 0x20, 0x01, 0x28, 0x03, 0x52, 0x06,
+	0x69, 0x64, 0x52, 0x6f, 0x6f, 0x6d, 0x12, 0x18, 0x0a, 0x07, 0x69, 0x64, 0x41, 0x63, 0x74, 0x6f,
+	0x72, 0x18, 0x03, 0x20, 0x01, 0x28, 0x03, 0x52, 0x07, 0x69, 0x64, 0x41, 0x63, 0x74, 0x6f, 0x72,
+	0x12, 0x22, 0x0a, 0x0c, 0x6f, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x61, 0x6c, 0x4e, 0x6f, 0x74, 0x65,
+	0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0c, 0x6f, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x61, 0x6c,
+	0x4e, 0x6f, 0x74, 0x65, 0x22, 0x73, 0x0a, 0x1f, 0x41, 0x64, 0x64, 0x45, 0x6e, 0x63, 0x6f, 0x75,
+	0x6e, 0x74, 0x65, 0x72, 0x52, 0x6f, 0x6f, 0x6d, 0x48, 0x69, 0x73, 0x74, 0x6f, 0x72, 0x79, 0x52,
+	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x12, 0x0a, 0x04, 0x63, 0x6f, 0x64, 0x65, 0x18,
+	0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x04, 0x63, 0x6f, 0x64, 0x65, 0x12, 0x18, 0x0a, 0x07, 0x6d,
+	0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x6d, 0x65,
+	0x73, 0x73, 0x61, 0x67, 0x65, 0x12, 0x22, 0x0a, 0x0c, 0x65, 0x72, 0x72, 0x6f, 0x72, 0x4d, 0x65,
+	0x73, 0x73, 0x61, 0x67, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0c, 0x65, 0x72, 0x72,
+	0x6f, 0x72, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x22, 0xee, 0x04, 0x0a, 0x09, 0x45, 0x6e,
 	0x63, 0x6f, 0x75, 0x6e, 0x74, 0x65, 0x72, 0x12, 0x20, 0x0a, 0x0b, 0x69, 0x64, 0x45, 0x6e, 0x63,
 	0x6f, 0x75, 0x6e, 0x74, 0x65, 0x72, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0b, 0x69, 0x64,
 	0x45, 0x6e, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x65, 0x72, 0x12, 0x1a, 0x0a, 0x08, 0x6d, 0x72, 0x4e,
@@ -711,33 +862,35 @@ func file_encounter_proto_rawDescGZIP() []byte {
 	return file_encounter_proto_rawDescData
 }
 
-var file_encounter_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
+var file_encounter_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
 var file_encounter_proto_goTypes = []interface{}{
-	(*GetEncounterDetailsRequest)(nil),  // 0: simrs.GetEncounterDetailsRequest
-	(*GetEncounterDetailsResponse)(nil), // 1: simrs.GetEncounterDetailsResponse
-	(*Encounter)(nil),                   // 2: simrs.Encounter
-	(*EncounterRoomHistory)(nil),        // 3: simrs.EncounterRoomHistory
-	(*EncounterUpdateStatusLog)(nil),    // 4: simrs.EncounterUpdateStatusLog
-	(*EncounterPersonInCharge)(nil),     // 5: simrs.EncounterPersonInCharge
-	(*HelperVar)(nil),                   // 6: simrs.HelperVar
-	(*Accounting)(nil),                  // 7: simrs.Accounting
+	(*GetEncounterDetailsRequest)(nil),      // 0: simrs.GetEncounterDetailsRequest
+	(*GetEncounterDetailsResponse)(nil),     // 1: simrs.GetEncounterDetailsResponse
+	(*AddEncounterRoomHistoryRequest)(nil),  // 2: simrs.AddEncounterRoomHistoryRequest
+	(*AddEncounterRoomHistoryResponse)(nil), // 3: simrs.AddEncounterRoomHistoryResponse
+	(*Encounter)(nil),                       // 4: simrs.Encounter
+	(*EncounterRoomHistory)(nil),            // 5: simrs.EncounterRoomHistory
+	(*EncounterUpdateStatusLog)(nil),        // 6: simrs.EncounterUpdateStatusLog
+	(*EncounterPersonInCharge)(nil),         // 7: simrs.EncounterPersonInCharge
+	(*HelperVar)(nil),                       // 8: simrs.HelperVar
+	(*Accounting)(nil),                      // 9: simrs.Accounting
 }
 var file_encounter_proto_depIdxs = []int32{
-	2,  // 0: simrs.GetEncounterDetailsResponse.encounters:type_name -> simrs.Encounter
-	6,  // 1: simrs.Encounter.paymentMethod:type_name -> simrs.HelperVar
-	6,  // 2: simrs.Encounter.entryMethod:type_name -> simrs.HelperVar
-	6,  // 3: simrs.Encounter.encounterStatus:type_name -> simrs.HelperVar
-	6,  // 4: simrs.Encounter.encounterType:type_name -> simrs.HelperVar
-	3,  // 5: simrs.Encounter.roomHistory:type_name -> simrs.EncounterRoomHistory
-	4,  // 6: simrs.Encounter.statusLog:type_name -> simrs.EncounterUpdateStatusLog
-	5,  // 7: simrs.Encounter.pic:type_name -> simrs.EncounterPersonInCharge
-	7,  // 8: simrs.Encounter.accounting:type_name -> simrs.Accounting
-	6,  // 9: simrs.EncounterRoomHistory.room:type_name -> simrs.HelperVar
-	7,  // 10: simrs.EncounterRoomHistory.accounting:type_name -> simrs.Accounting
-	6,  // 11: simrs.EncounterUpdateStatusLog.room:type_name -> simrs.HelperVar
-	6,  // 12: simrs.EncounterUpdateStatusLog.encounterStatus:type_name -> simrs.HelperVar
-	7,  // 13: simrs.EncounterUpdateStatusLog.accounting:type_name -> simrs.Accounting
-	6,  // 14: simrs.EncounterPersonInCharge.relation:type_name -> simrs.HelperVar
+	4,  // 0: simrs.GetEncounterDetailsResponse.encounters:type_name -> simrs.Encounter
+	8,  // 1: simrs.Encounter.paymentMethod:type_name -> simrs.HelperVar
+	8,  // 2: simrs.Encounter.entryMethod:type_name -> simrs.HelperVar
+	8,  // 3: simrs.Encounter.encounterStatus:type_name -> simrs.HelperVar
+	8,  // 4: simrs.Encounter.encounterType:type_name -> simrs.HelperVar
+	5,  // 5: simrs.Encounter.roomHistory:type_name -> simrs.EncounterRoomHistory
+	6,  // 6: simrs.Encounter.statusLog:type_name -> simrs.EncounterUpdateStatusLog
+	7,  // 7: simrs.Encounter.pic:type_name -> simrs.EncounterPersonInCharge
+	9,  // 8: simrs.Encounter.accounting:type_name -> simrs.Accounting
+	8,  // 9: simrs.EncounterRoomHistory.room:type_name -> simrs.HelperVar
+	9,  // 10: simrs.EncounterRoomHistory.accounting:type_name -> simrs.Accounting
+	8,  // 11: simrs.EncounterUpdateStatusLog.room:type_name -> simrs.HelperVar
+	8,  // 12: simrs.EncounterUpdateStatusLog.encounterStatus:type_name -> simrs.HelperVar
+	9,  // 13: simrs.EncounterUpdateStatusLog.accounting:type_name -> simrs.Accounting
+	8,  // 14: simrs.EncounterPersonInCharge.relation:type_name -> simrs.HelperVar
 	15, // [15:15] is the sub-list for method output_type
 	15, // [15:15] is the sub-list for method input_type
 	15, // [15:15] is the sub-list for extension type_name
@@ -777,7 +930,7 @@ func file_encounter_proto_init() {
 			}
 		}
 		file_encounter_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Encounter); i {
+			switch v := v.(*AddEncounterRoomHistoryRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -789,7 +942,7 @@ func file_encounter_proto_init() {
 			}
 		}
 		file_encounter_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*EncounterRoomHistory); i {
+			switch v := v.(*AddEncounterRoomHistoryResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -801,7 +954,7 @@ func file_encounter_proto_init() {
 			}
 		}
 		file_encounter_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*EncounterUpdateStatusLog); i {
+			switch v := v.(*Encounter); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -813,6 +966,30 @@ func file_encounter_proto_init() {
 			}
 		}
 		file_encounter_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*EncounterRoomHistory); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_encounter_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*EncounterUpdateStatusLog); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_encounter_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*EncounterPersonInCharge); i {
 			case 0:
 				return &v.state
@@ -831,7 +1008,7 @@ func file_encounter_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_encounter_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   6,
+			NumMessages:   8,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
