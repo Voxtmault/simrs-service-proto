@@ -505,3 +505,125 @@ var PolyclinicService_ServiceDesc = grpc.ServiceDesc{
 	Streams:  []grpc.StreamDesc{},
 	Metadata: "simrs.proto",
 }
+
+// EmergencyRoomServiceClient is the client API for EmergencyRoomService service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type EmergencyRoomServiceClient interface {
+	AddERPatient(ctx context.Context, in *AddERPatientRequest, opts ...grpc.CallOption) (*GenericERServiceResponse, error)
+	CompensateAddERPatientEncounter(ctx context.Context, in *CompensateAddERPatientEncounterRequest, opts ...grpc.CallOption) (*GenericERServiceResponse, error)
+}
+
+type emergencyRoomServiceClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewEmergencyRoomServiceClient(cc grpc.ClientConnInterface) EmergencyRoomServiceClient {
+	return &emergencyRoomServiceClient{cc}
+}
+
+func (c *emergencyRoomServiceClient) AddERPatient(ctx context.Context, in *AddERPatientRequest, opts ...grpc.CallOption) (*GenericERServiceResponse, error) {
+	out := new(GenericERServiceResponse)
+	err := c.cc.Invoke(ctx, "/simrs.EmergencyRoomService/AddERPatient", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *emergencyRoomServiceClient) CompensateAddERPatientEncounter(ctx context.Context, in *CompensateAddERPatientEncounterRequest, opts ...grpc.CallOption) (*GenericERServiceResponse, error) {
+	out := new(GenericERServiceResponse)
+	err := c.cc.Invoke(ctx, "/simrs.EmergencyRoomService/CompensateAddERPatientEncounter", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// EmergencyRoomServiceServer is the server API for EmergencyRoomService service.
+// All implementations must embed UnimplementedEmergencyRoomServiceServer
+// for forward compatibility
+type EmergencyRoomServiceServer interface {
+	AddERPatient(context.Context, *AddERPatientRequest) (*GenericERServiceResponse, error)
+	CompensateAddERPatientEncounter(context.Context, *CompensateAddERPatientEncounterRequest) (*GenericERServiceResponse, error)
+	mustEmbedUnimplementedEmergencyRoomServiceServer()
+}
+
+// UnimplementedEmergencyRoomServiceServer must be embedded to have forward compatible implementations.
+type UnimplementedEmergencyRoomServiceServer struct {
+}
+
+func (UnimplementedEmergencyRoomServiceServer) AddERPatient(context.Context, *AddERPatientRequest) (*GenericERServiceResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AddERPatient not implemented")
+}
+func (UnimplementedEmergencyRoomServiceServer) CompensateAddERPatientEncounter(context.Context, *CompensateAddERPatientEncounterRequest) (*GenericERServiceResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CompensateAddERPatientEncounter not implemented")
+}
+func (UnimplementedEmergencyRoomServiceServer) mustEmbedUnimplementedEmergencyRoomServiceServer() {}
+
+// UnsafeEmergencyRoomServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to EmergencyRoomServiceServer will
+// result in compilation errors.
+type UnsafeEmergencyRoomServiceServer interface {
+	mustEmbedUnimplementedEmergencyRoomServiceServer()
+}
+
+func RegisterEmergencyRoomServiceServer(s grpc.ServiceRegistrar, srv EmergencyRoomServiceServer) {
+	s.RegisterService(&EmergencyRoomService_ServiceDesc, srv)
+}
+
+func _EmergencyRoomService_AddERPatient_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AddERPatientRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(EmergencyRoomServiceServer).AddERPatient(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/simrs.EmergencyRoomService/AddERPatient",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(EmergencyRoomServiceServer).AddERPatient(ctx, req.(*AddERPatientRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _EmergencyRoomService_CompensateAddERPatientEncounter_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CompensateAddERPatientEncounterRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(EmergencyRoomServiceServer).CompensateAddERPatientEncounter(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/simrs.EmergencyRoomService/CompensateAddERPatientEncounter",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(EmergencyRoomServiceServer).CompensateAddERPatientEncounter(ctx, req.(*CompensateAddERPatientEncounterRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// EmergencyRoomService_ServiceDesc is the grpc.ServiceDesc for EmergencyRoomService service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var EmergencyRoomService_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "simrs.EmergencyRoomService",
+	HandlerType: (*EmergencyRoomServiceServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "AddERPatient",
+			Handler:    _EmergencyRoomService_AddERPatient_Handler,
+		},
+		{
+			MethodName: "CompensateAddERPatientEncounter",
+			Handler:    _EmergencyRoomService_CompensateAddERPatientEncounter_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "simrs.proto",
+}

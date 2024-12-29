@@ -8,6 +8,7 @@ import "encounter.proto";
 import "patient.proto";
 import "queue.proto";
 import "polyclinic.proto";
+import "emergency_room.proto";
 
 service PatientService {
     rpc GetPatients(GetPatientsRequest) returns (GetPatientsResponse);
@@ -27,4 +28,9 @@ service QueueService {
 service PolyclinicService {
     rpc CreatePolyclinicQueue(CreatePolyclinicQueueRequest) returns (CreatePolyclinicQueueResponse);
     rpc CompensateCreatePolyQueueEncounter(CompensateCreatePolyQueueEncounterRequest) returns (CompensateCreatePolyQueueEncounterResponse);
+}
+
+service EmergencyRoomService {
+    rpc AddERPatient(AddERPatientRequest) returns (GenericERServiceResponse);
+    rpc CompensateAddERPatientEncounter(CompensateAddERPatientEncounterRequest) returns (GenericERServiceResponse);
 }

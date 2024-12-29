@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+option go_package = ".";
+
+package simrs;
+import "helper.proto";
+
+message AddERPatientRequest{
+    ERPatient erPatient = 1;
+}
+
+message CompensateAddERPatientEncounterRequest {
+    int64 queueId = 1;
+    int64 actorId = 2;
+}
+
+// Model definitions
+message ERPatient {
+    int64 idQueue = 1;
+    int64 idEncounter = 2;
+    string mrNumber = 3;
+    HelperVar room = 5;
+    string note = 6;
+    Accounting accounting = 7;
+}
+
+// Generic Encounter Service Response
+message GenericERServiceResponse {
+    int32 code = 1;
+    string message = 2;
+    string errorMessage = 3;
+}

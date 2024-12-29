@@ -27,6 +27,8 @@ var patient_pb = require('./patient_pb.js')
 var queue_pb = require('./queue_pb.js')
 
 var polyclinic_pb = require('./polyclinic_pb.js')
+
+var emergency_room_pb = require('./emergency_room_pb.js')
 const proto = {};
 proto.simrs = require('./simrs_pb.js');
 
@@ -723,6 +725,180 @@ proto.simrs.PolyclinicServicePromiseClient.prototype.compensateCreatePolyQueueEn
       request,
       metadata || {},
       methodDescriptor_PolyclinicService_CompensateCreatePolyQueueEncounter);
+};
+
+
+/**
+ * @param {string} hostname
+ * @param {?Object} credentials
+ * @param {?grpc.web.ClientOptions} options
+ * @constructor
+ * @struct
+ * @final
+ */
+proto.simrs.EmergencyRoomServiceClient =
+    function(hostname, credentials, options) {
+  if (!options) options = {};
+  options.format = 'text';
+
+  /**
+   * @private @const {!grpc.web.GrpcWebClientBase} The client
+   */
+  this.client_ = new grpc.web.GrpcWebClientBase(options);
+
+  /**
+   * @private @const {string} The hostname
+   */
+  this.hostname_ = hostname.replace(/\/+$/, '');
+
+};
+
+
+/**
+ * @param {string} hostname
+ * @param {?Object} credentials
+ * @param {?grpc.web.ClientOptions} options
+ * @constructor
+ * @struct
+ * @final
+ */
+proto.simrs.EmergencyRoomServicePromiseClient =
+    function(hostname, credentials, options) {
+  if (!options) options = {};
+  options.format = 'text';
+
+  /**
+   * @private @const {!grpc.web.GrpcWebClientBase} The client
+   */
+  this.client_ = new grpc.web.GrpcWebClientBase(options);
+
+  /**
+   * @private @const {string} The hostname
+   */
+  this.hostname_ = hostname.replace(/\/+$/, '');
+
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.simrs.AddERPatientRequest,
+ *   !proto.simrs.GenericERServiceResponse>}
+ */
+const methodDescriptor_EmergencyRoomService_AddERPatient = new grpc.web.MethodDescriptor(
+  '/simrs.EmergencyRoomService/AddERPatient',
+  grpc.web.MethodType.UNARY,
+  emergency_room_pb.AddERPatientRequest,
+  emergency_room_pb.GenericERServiceResponse,
+  /**
+   * @param {!proto.simrs.AddERPatientRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  emergency_room_pb.GenericERServiceResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.simrs.AddERPatientRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.simrs.GenericERServiceResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.simrs.GenericERServiceResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.simrs.EmergencyRoomServiceClient.prototype.addERPatient =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/simrs.EmergencyRoomService/AddERPatient',
+      request,
+      metadata || {},
+      methodDescriptor_EmergencyRoomService_AddERPatient,
+      callback);
+};
+
+
+/**
+ * @param {!proto.simrs.AddERPatientRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.simrs.GenericERServiceResponse>}
+ *     Promise that resolves to the response
+ */
+proto.simrs.EmergencyRoomServicePromiseClient.prototype.addERPatient =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/simrs.EmergencyRoomService/AddERPatient',
+      request,
+      metadata || {},
+      methodDescriptor_EmergencyRoomService_AddERPatient);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.simrs.CompensateAddERPatientEncounterRequest,
+ *   !proto.simrs.GenericERServiceResponse>}
+ */
+const methodDescriptor_EmergencyRoomService_CompensateAddERPatientEncounter = new grpc.web.MethodDescriptor(
+  '/simrs.EmergencyRoomService/CompensateAddERPatientEncounter',
+  grpc.web.MethodType.UNARY,
+  emergency_room_pb.CompensateAddERPatientEncounterRequest,
+  emergency_room_pb.GenericERServiceResponse,
+  /**
+   * @param {!proto.simrs.CompensateAddERPatientEncounterRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  emergency_room_pb.GenericERServiceResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.simrs.CompensateAddERPatientEncounterRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.simrs.GenericERServiceResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.simrs.GenericERServiceResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.simrs.EmergencyRoomServiceClient.prototype.compensateAddERPatientEncounter =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/simrs.EmergencyRoomService/CompensateAddERPatientEncounter',
+      request,
+      metadata || {},
+      methodDescriptor_EmergencyRoomService_CompensateAddERPatientEncounter,
+      callback);
+};
+
+
+/**
+ * @param {!proto.simrs.CompensateAddERPatientEncounterRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.simrs.GenericERServiceResponse>}
+ *     Promise that resolves to the response
+ */
+proto.simrs.EmergencyRoomServicePromiseClient.prototype.compensateAddERPatientEncounter =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/simrs.EmergencyRoomService/CompensateAddERPatientEncounter',
+      request,
+      metadata || {},
+      methodDescriptor_EmergencyRoomService_CompensateAddERPatientEncounter);
 };
 
 

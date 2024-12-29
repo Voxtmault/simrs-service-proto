@@ -29,3 +29,5 @@ var queue_pb = require('./queue_pb.js');
 goog.object.extend(proto, queue_pb);
 var polyclinic_pb = require('./polyclinic_pb.js');
 goog.object.extend(proto, polyclinic_pb);
+var emergency_room_pb = require('./emergency_room_pb.js');
+goog.object.extend(proto, emergency_room_pb);
