@@ -6,7 +6,7 @@ package simrs;
 
 import "encounter.proto";
 import "patient.proto";
-import "queue.proto";
+import "front_desk.proto";
 import "polyclinic.proto";
 import "emergency_room.proto";
 
@@ -20,9 +20,11 @@ service EncounterService {
     rpc DeleteEncounterRoomHistory(DeleteEncounterRoomHistoryRequest) returns (GenericEncounterServiceResponse);
 }
 
+// Front Desk Service
 service QueueService {
     rpc UpdateQueue(UpdateQueueRequest) returns (UpdateQueueResponse);
     rpc CompensateUpdateQueueEncounter(CompensateUpdateQueueEncounterRequest) returns (CompensateUpdateQueueEncounterResponse);
+    rpc GetFrontDeskQueue(GetFrontDeskQueueRequest) returns (GetFrontDeskQueueResponse);
 }
 
 service PolyclinicService {

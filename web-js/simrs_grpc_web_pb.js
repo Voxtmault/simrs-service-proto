@@ -24,7 +24,7 @@ var encounter_pb = require('./encounter_pb.js')
 
 var patient_pb = require('./patient_pb.js')
 
-var queue_pb = require('./queue_pb.js')
+var front_desk_pb = require('./front_desk_pb.js')
 
 var polyclinic_pb = require('./polyclinic_pb.js')
 
@@ -441,8 +441,8 @@ proto.simrs.QueueServicePromiseClient =
 const methodDescriptor_QueueService_UpdateQueue = new grpc.web.MethodDescriptor(
   '/simrs.QueueService/UpdateQueue',
   grpc.web.MethodType.UNARY,
-  queue_pb.UpdateQueueRequest,
-  queue_pb.UpdateQueueResponse,
+  front_desk_pb.UpdateQueueRequest,
+  front_desk_pb.UpdateQueueResponse,
   /**
    * @param {!proto.simrs.UpdateQueueRequest} request
    * @return {!Uint8Array}
@@ -450,7 +450,7 @@ const methodDescriptor_QueueService_UpdateQueue = new grpc.web.MethodDescriptor(
   function(request) {
     return request.serializeBinary();
   },
-  queue_pb.UpdateQueueResponse.deserializeBinary
+  front_desk_pb.UpdateQueueResponse.deserializeBinary
 );
 
 
@@ -502,8 +502,8 @@ proto.simrs.QueueServicePromiseClient.prototype.updateQueue =
 const methodDescriptor_QueueService_CompensateUpdateQueueEncounter = new grpc.web.MethodDescriptor(
   '/simrs.QueueService/CompensateUpdateQueueEncounter',
   grpc.web.MethodType.UNARY,
-  queue_pb.CompensateUpdateQueueEncounterRequest,
-  queue_pb.CompensateUpdateQueueEncounterResponse,
+  front_desk_pb.CompensateUpdateQueueEncounterRequest,
+  front_desk_pb.CompensateUpdateQueueEncounterResponse,
   /**
    * @param {!proto.simrs.CompensateUpdateQueueEncounterRequest} request
    * @return {!Uint8Array}
@@ -511,7 +511,7 @@ const methodDescriptor_QueueService_CompensateUpdateQueueEncounter = new grpc.we
   function(request) {
     return request.serializeBinary();
   },
-  queue_pb.CompensateUpdateQueueEncounterResponse.deserializeBinary
+  front_desk_pb.CompensateUpdateQueueEncounterResponse.deserializeBinary
 );
 
 
@@ -551,6 +551,67 @@ proto.simrs.QueueServicePromiseClient.prototype.compensateUpdateQueueEncounter =
       request,
       metadata || {},
       methodDescriptor_QueueService_CompensateUpdateQueueEncounter);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.simrs.GetFrontDeskQueueRequest,
+ *   !proto.simrs.GetFrontDeskQueueResponse>}
+ */
+const methodDescriptor_QueueService_GetFrontDeskQueue = new grpc.web.MethodDescriptor(
+  '/simrs.QueueService/GetFrontDeskQueue',
+  grpc.web.MethodType.UNARY,
+  front_desk_pb.GetFrontDeskQueueRequest,
+  front_desk_pb.GetFrontDeskQueueResponse,
+  /**
+   * @param {!proto.simrs.GetFrontDeskQueueRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  front_desk_pb.GetFrontDeskQueueResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.simrs.GetFrontDeskQueueRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.simrs.GetFrontDeskQueueResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.simrs.GetFrontDeskQueueResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.simrs.QueueServiceClient.prototype.getFrontDeskQueue =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/simrs.QueueService/GetFrontDeskQueue',
+      request,
+      metadata || {},
+      methodDescriptor_QueueService_GetFrontDeskQueue,
+      callback);
+};
+
+
+/**
+ * @param {!proto.simrs.GetFrontDeskQueueRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.simrs.GetFrontDeskQueueResponse>}
+ *     Promise that resolves to the response
+ */
+proto.simrs.QueueServicePromiseClient.prototype.getFrontDeskQueue =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/simrs.QueueService/GetFrontDeskQueue',
+      request,
+      metadata || {},
+      methodDescriptor_QueueService_GetFrontDeskQueue);
 };
 
 

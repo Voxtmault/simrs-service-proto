@@ -268,6 +268,7 @@ var EncounterService_ServiceDesc = grpc.ServiceDesc{
 type QueueServiceClient interface {
 	UpdateQueue(ctx context.Context, in *UpdateQueueRequest, opts ...grpc.CallOption) (*UpdateQueueResponse, error)
 	CompensateUpdateQueueEncounter(ctx context.Context, in *CompensateUpdateQueueEncounterRequest, opts ...grpc.CallOption) (*CompensateUpdateQueueEncounterResponse, error)
+	GetFrontDeskQueue(ctx context.Context, in *GetFrontDeskQueueRequest, opts ...grpc.CallOption) (*GetFrontDeskQueueResponse, error)
 }
 
 type queueServiceClient struct {
@@ -296,12 +297,22 @@ func (c *queueServiceClient) CompensateUpdateQueueEncounter(ctx context.Context,
 	return out, nil
 }
 
+func (c *queueServiceClient) GetFrontDeskQueue(ctx context.Context, in *GetFrontDeskQueueRequest, opts ...grpc.CallOption) (*GetFrontDeskQueueResponse, error) {
+	out := new(GetFrontDeskQueueResponse)
+	err := c.cc.Invoke(ctx, "/simrs.QueueService/GetFrontDeskQueue", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // QueueServiceServer is the server API for QueueService service.
 // All implementations must embed UnimplementedQueueServiceServer
 // for forward compatibility
 type QueueServiceServer interface {
 	UpdateQueue(context.Context, *UpdateQueueRequest) (*UpdateQueueResponse, error)
 	CompensateUpdateQueueEncounter(context.Context, *CompensateUpdateQueueEncounterRequest) (*CompensateUpdateQueueEncounterResponse, error)
+	GetFrontDeskQueue(context.Context, *GetFrontDeskQueueRequest) (*GetFrontDeskQueueResponse, error)
 	mustEmbedUnimplementedQueueServiceServer()
 }
 
@@ -314,6 +325,9 @@ func (UnimplementedQueueServiceServer) UpdateQueue(context.Context, *UpdateQueue
 }
 func (UnimplementedQueueServiceServer) CompensateUpdateQueueEncounter(context.Context, *CompensateUpdateQueueEncounterRequest) (*CompensateUpdateQueueEncounterResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CompensateUpdateQueueEncounter not implemented")
+}
+func (UnimplementedQueueServiceServer) GetFrontDeskQueue(context.Context, *GetFrontDeskQueueRequest) (*GetFrontDeskQueueResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetFrontDeskQueue not implemented")
 }
 func (UnimplementedQueueServiceServer) mustEmbedUnimplementedQueueServiceServer() {}
 
@@ -364,6 +378,24 @@ func _QueueService_CompensateUpdateQueueEncounter_Handler(srv interface{}, ctx c
 	return interceptor(ctx, in, info, handler)
 }
 
+func _QueueService_GetFrontDeskQueue_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetFrontDeskQueueRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(QueueServiceServer).GetFrontDeskQueue(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/simrs.QueueService/GetFrontDeskQueue",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(QueueServiceServer).GetFrontDeskQueue(ctx, req.(*GetFrontDeskQueueRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // QueueService_ServiceDesc is the grpc.ServiceDesc for QueueService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -378,6 +410,10 @@ var QueueService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "CompensateUpdateQueueEncounter",
 			Handler:    _QueueService_CompensateUpdateQueueEncounter_Handler,
+		},
+		{
+			MethodName: "GetFrontDeskQueue",
+			Handler:    _QueueService_GetFrontDeskQueue_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

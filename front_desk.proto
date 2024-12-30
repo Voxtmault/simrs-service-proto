@@ -24,6 +24,17 @@ message CompensateUpdateQueueEncounterResponse {
     string errorMessage = 3;
 }
 
+message GetFrontDeskQueueRequest {
+    int64 idQueue = 1;
+}
+
+message GetFrontDeskQueueResponse {
+    int32 code = 1;
+    string message = 2;
+    string errorMessage = 3;
+    Queue data = 4;
+}
+
 // Model definitions
 message Queue {
     int64 idQueue = 1;
