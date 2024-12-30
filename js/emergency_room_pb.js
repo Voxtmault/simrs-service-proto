@@ -295,7 +295,8 @@ proto.simrs.CompensateAddERPatientEncounterRequest.prototype.toObject = function
 proto.simrs.CompensateAddERPatientEncounterRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     queueid: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    actorid: jspb.Message.getFieldWithDefault(msg, 2, 0)
+    actorid: jspb.Message.getFieldWithDefault(msg, 2, 0),
+    encounterid: jspb.Message.getFieldWithDefault(msg, 3, 0)
   };
 
   if (includeInstance) {
@@ -340,6 +341,10 @@ proto.simrs.CompensateAddERPatientEncounterRequest.deserializeBinaryFromReader =
       var value = /** @type {number} */ (reader.readInt64());
       msg.setActorid(value);
       break;
+    case 3:
+      var value = /** @type {number} */ (reader.readInt64());
+      msg.setEncounterid(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -383,6 +388,13 @@ proto.simrs.CompensateAddERPatientEncounterRequest.serializeBinaryToWriter = fun
       f
     );
   }
+  f = message.getEncounterid();
+  if (f !== 0) {
+    writer.writeInt64(
+      3,
+      f
+    );
+  }
 };
 
 
@@ -419,6 +431,24 @@ proto.simrs.CompensateAddERPatientEncounterRequest.prototype.getActorid = functi
  */
 proto.simrs.CompensateAddERPatientEncounterRequest.prototype.setActorid = function(value) {
   return jspb.Message.setProto3IntField(this, 2, value);
+};
+
+
+/**
+ * optional int64 encounterId = 3;
+ * @return {number}
+ */
+proto.simrs.CompensateAddERPatientEncounterRequest.prototype.getEncounterid = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.simrs.CompensateAddERPatientEncounterRequest} returns this
+ */
+proto.simrs.CompensateAddERPatientEncounterRequest.prototype.setEncounterid = function(value) {
+  return jspb.Message.setProto3IntField(this, 3, value);
 };
 
 

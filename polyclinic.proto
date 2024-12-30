@@ -17,6 +17,7 @@ message CreatePolyclinicQueueResponse {
 message CompensateCreatePolyQueueEncounterRequest {
     int64 queueId = 1;
     int64 actorId = 2;
+    int64 encounterId = 3;
 }
 message CompensateCreatePolyQueueEncounterResponse {
     int32 code = 1;
