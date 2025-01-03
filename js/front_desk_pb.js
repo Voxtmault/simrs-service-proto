@@ -146,7 +146,7 @@ if (goog.DEBUG && !COMPILED) {
  * @constructor
  */
 proto.simrs.GetFrontDeskQueueResponse = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.simrs.GetFrontDeskQueueResponse.repeatedFields_, null);
 };
 goog.inherits(proto.simrs.GetFrontDeskQueueResponse, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
@@ -999,6 +999,13 @@ proto.simrs.GetFrontDeskQueueRequest.prototype.setIdqueue = function(value) {
 
 
 
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.simrs.GetFrontDeskQueueResponse.repeatedFields_ = [4];
+
 
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
@@ -1033,7 +1040,8 @@ proto.simrs.GetFrontDeskQueueResponse.toObject = function(includeInstance, msg) 
     code: jspb.Message.getFieldWithDefault(msg, 1, 0),
     message: jspb.Message.getFieldWithDefault(msg, 2, ""),
     errormessage: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    data: (f = msg.getData()) && proto.simrs.Queue.toObject(includeInstance, f)
+    dataList: jspb.Message.toObjectList(msg.getDataList(),
+    proto.simrs.Queue.toObject, includeInstance)
   };
 
   if (includeInstance) {
@@ -1085,7 +1093,7 @@ proto.simrs.GetFrontDeskQueueResponse.deserializeBinaryFromReader = function(msg
     case 4:
       var value = new proto.simrs.Queue;
       reader.readMessage(value,proto.simrs.Queue.deserializeBinaryFromReader);
-      msg.setData(value);
+      msg.addData(value);
       break;
     default:
       reader.skipField();
@@ -1137,9 +1145,9 @@ proto.simrs.GetFrontDeskQueueResponse.serializeBinaryToWriter = function(message
       f
     );
   }
-  f = message.getData();
-  if (f != null) {
-    writer.writeMessage(
+  f = message.getDataList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
       4,
       f,
       proto.simrs.Queue.serializeBinaryToWriter
@@ -1203,39 +1211,40 @@ proto.simrs.GetFrontDeskQueueResponse.prototype.setErrormessage = function(value
 
 
 /**
- * optional Queue data = 4;
- * @return {?proto.simrs.Queue}
+ * repeated Queue data = 4;
+ * @return {!Array<!proto.simrs.Queue>}
  */
-proto.simrs.GetFrontDeskQueueResponse.prototype.getData = function() {
-  return /** @type{?proto.simrs.Queue} */ (
-    jspb.Message.getWrapperField(this, proto.simrs.Queue, 4));
+proto.simrs.GetFrontDeskQueueResponse.prototype.getDataList = function() {
+  return /** @type{!Array<!proto.simrs.Queue>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.simrs.Queue, 4));
 };
 
 
 /**
- * @param {?proto.simrs.Queue|undefined} value
+ * @param {!Array<!proto.simrs.Queue>} value
  * @return {!proto.simrs.GetFrontDeskQueueResponse} returns this
 */
-proto.simrs.GetFrontDeskQueueResponse.prototype.setData = function(value) {
-  return jspb.Message.setWrapperField(this, 4, value);
+proto.simrs.GetFrontDeskQueueResponse.prototype.setDataList = function(value) {
+  return jspb.Message.setRepeatedWrapperField(this, 4, value);
 };
 
 
 /**
- * Clears the message field making it undefined.
+ * @param {!proto.simrs.Queue=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.simrs.Queue}
+ */
+proto.simrs.GetFrontDeskQueueResponse.prototype.addData = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 4, opt_value, proto.simrs.Queue, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
  * @return {!proto.simrs.GetFrontDeskQueueResponse} returns this
  */
-proto.simrs.GetFrontDeskQueueResponse.prototype.clearData = function() {
-  return this.setData(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.simrs.GetFrontDeskQueueResponse.prototype.hasData = function() {
-  return jspb.Message.getField(this, 4) != null;
+proto.simrs.GetFrontDeskQueueResponse.prototype.clearDataList = function() {
+  return this.setDataList([]);
 };
 
 

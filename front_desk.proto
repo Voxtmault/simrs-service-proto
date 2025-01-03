@@ -32,7 +32,7 @@ message GetFrontDeskQueueResponse {
     int32 code = 1;
     string message = 2;
     string errorMessage = 3;
-    Queue data = 4;
+    repeated Queue data = 4;
 }
 
 // Model definitions
