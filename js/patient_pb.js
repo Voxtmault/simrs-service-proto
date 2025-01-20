@@ -1752,7 +1752,8 @@ proto.simrs.PatientData.toObject = function(includeInstance, msg) {
     religion: (f = msg.getReligion()) && helper_pb.HelperVar.toObject(includeInstance, f),
     marriagestatus: (f = msg.getMarriagestatus()) && helper_pb.HelperVar.toObject(includeInstance, f),
     educationlevel: (f = msg.getEducationlevel()) && helper_pb.HelperVar.toObject(includeInstance, f),
-    citizenship: (f = msg.getCitizenship()) && helper_pb.HelperVar.toObject(includeInstance, f)
+    citizenship: (f = msg.getCitizenship()) && helper_pb.HelperVar.toObject(includeInstance, f),
+    age: jspb.Message.getFieldWithDefault(msg, 24, "")
   };
 
   if (includeInstance) {
@@ -1890,6 +1891,10 @@ proto.simrs.PatientData.deserializeBinaryFromReader = function(msg, reader) {
       var value = new helper_pb.HelperVar;
       reader.readMessage(value,helper_pb.HelperVar.deserializeBinaryFromReader);
       msg.setCitizenship(value);
+      break;
+    case 24:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setAge(value);
       break;
     default:
       reader.skipField();
@@ -2089,6 +2094,13 @@ proto.simrs.PatientData.serializeBinaryToWriter = function(message, writer) {
       23,
       f,
       helper_pb.HelperVar.serializeBinaryToWriter
+    );
+  }
+  f = message.getAge();
+  if (f.length > 0) {
+    writer.writeString(
+      24,
+      f
     );
   }
 };
@@ -2697,6 +2709,24 @@ proto.simrs.PatientData.prototype.clearCitizenship = function() {
  */
 proto.simrs.PatientData.prototype.hasCitizenship = function() {
   return jspb.Message.getField(this, 23) != null;
+};
+
+
+/**
+ * optional string age = 24;
+ * @return {string}
+ */
+proto.simrs.PatientData.prototype.getAge = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 24, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.simrs.PatientData} returns this
+ */
+proto.simrs.PatientData.prototype.setAge = function(value) {
+  return jspb.Message.setProto3StringField(this, 24, value);
 };
 
 

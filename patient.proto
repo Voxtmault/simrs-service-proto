@@ -76,4 +76,5 @@ message PatientData {
     HelperVar marriageStatus = 21;
     HelperVar educationLevel = 22;
     HelperVar citizenship = 23;
+    string age = 24;
 }
