@@ -1188,7 +1188,7 @@ proto.simrs.DeleteEncounterRoomHistoryRequest.prototype.setIdroom = function(val
  * @private {!Array<number>}
  * @const
  */
-proto.simrs.Encounter.repeatedFields_ = [9,10];
+proto.simrs.Encounter.repeatedFields_ = [9,10,14,15];
 
 
 
@@ -1235,7 +1235,11 @@ proto.simrs.Encounter.toObject = function(includeInstance, msg) {
     proto.simrs.EncounterUpdateStatusLog.toObject, includeInstance),
     pic: (f = msg.getPic()) && proto.simrs.EncounterPersonInCharge.toObject(includeInstance, f),
     note: jspb.Message.getFieldWithDefault(msg, 12, ""),
-    accounting: (f = msg.getAccounting()) && helper_pb.Accounting.toObject(includeInstance, f)
+    accounting: (f = msg.getAccounting()) && helper_pb.Accounting.toObject(includeInstance, f),
+    attendingdoctorList: jspb.Message.toObjectList(msg.getAttendingdoctorList(),
+    helper_pb.HelperVar.toObject, includeInstance),
+    attendingnurseList: jspb.Message.toObjectList(msg.getAttendingnurseList(),
+    helper_pb.HelperVar.toObject, includeInstance)
   };
 
   if (includeInstance) {
@@ -1331,6 +1335,16 @@ proto.simrs.Encounter.deserializeBinaryFromReader = function(msg, reader) {
       var value = new helper_pb.Accounting;
       reader.readMessage(value,helper_pb.Accounting.deserializeBinaryFromReader);
       msg.setAccounting(value);
+      break;
+    case 14:
+      var value = new helper_pb.HelperVar;
+      reader.readMessage(value,helper_pb.HelperVar.deserializeBinaryFromReader);
+      msg.addAttendingdoctor(value);
+      break;
+    case 15:
+      var value = new helper_pb.HelperVar;
+      reader.readMessage(value,helper_pb.HelperVar.deserializeBinaryFromReader);
+      msg.addAttendingnurse(value);
       break;
     default:
       reader.skipField();
@@ -1458,6 +1472,22 @@ proto.simrs.Encounter.serializeBinaryToWriter = function(message, writer) {
       13,
       f,
       helper_pb.Accounting.serializeBinaryToWriter
+    );
+  }
+  f = message.getAttendingdoctorList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
+      14,
+      f,
+      helper_pb.HelperVar.serializeBinaryToWriter
+    );
+  }
+  f = message.getAttendingnurseList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
+      15,
+      f,
+      helper_pb.HelperVar.serializeBinaryToWriter
     );
   }
 };
@@ -1848,6 +1878,82 @@ proto.simrs.Encounter.prototype.clearAccounting = function() {
  */
 proto.simrs.Encounter.prototype.hasAccounting = function() {
   return jspb.Message.getField(this, 13) != null;
+};
+
+
+/**
+ * repeated HelperVar attendingDoctor = 14;
+ * @return {!Array<!proto.simrs.HelperVar>}
+ */
+proto.simrs.Encounter.prototype.getAttendingdoctorList = function() {
+  return /** @type{!Array<!proto.simrs.HelperVar>} */ (
+    jspb.Message.getRepeatedWrapperField(this, helper_pb.HelperVar, 14));
+};
+
+
+/**
+ * @param {!Array<!proto.simrs.HelperVar>} value
+ * @return {!proto.simrs.Encounter} returns this
+*/
+proto.simrs.Encounter.prototype.setAttendingdoctorList = function(value) {
+  return jspb.Message.setRepeatedWrapperField(this, 14, value);
+};
+
+
+/**
+ * @param {!proto.simrs.HelperVar=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.simrs.HelperVar}
+ */
+proto.simrs.Encounter.prototype.addAttendingdoctor = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 14, opt_value, proto.simrs.HelperVar, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.simrs.Encounter} returns this
+ */
+proto.simrs.Encounter.prototype.clearAttendingdoctorList = function() {
+  return this.setAttendingdoctorList([]);
+};
+
+
+/**
+ * repeated HelperVar attendingNurse = 15;
+ * @return {!Array<!proto.simrs.HelperVar>}
+ */
+proto.simrs.Encounter.prototype.getAttendingnurseList = function() {
+  return /** @type{!Array<!proto.simrs.HelperVar>} */ (
+    jspb.Message.getRepeatedWrapperField(this, helper_pb.HelperVar, 15));
+};
+
+
+/**
+ * @param {!Array<!proto.simrs.HelperVar>} value
+ * @return {!proto.simrs.Encounter} returns this
+*/
+proto.simrs.Encounter.prototype.setAttendingnurseList = function(value) {
+  return jspb.Message.setRepeatedWrapperField(this, 15, value);
+};
+
+
+/**
+ * @param {!proto.simrs.HelperVar=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.simrs.HelperVar}
+ */
+proto.simrs.Encounter.prototype.addAttendingnurse = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 15, opt_value, proto.simrs.HelperVar, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.simrs.Encounter} returns this
+ */
+proto.simrs.Encounter.prototype.clearAttendingnurseList = function() {
+  return this.setAttendingnurseList([]);
 };
 
 
