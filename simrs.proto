@@ -25,6 +25,8 @@ service QueueService {
     rpc UpdateQueue(UpdateQueueRequest) returns (UpdateQueueResponse);
     rpc CompensateUpdateQueueEncounter(CompensateUpdateQueueEncounterRequest) returns (CompensateUpdateQueueEncounterResponse);
     rpc GetFrontDeskQueue(GetFrontDeskQueueRequest) returns (GetFrontDeskQueueResponse);
+    rpc ManualQueue(ManualQueueRequest) returns (ManualQueueResponse);
+    rpc CompensateManualQueue(CompensateManualQueueRequest) returns (CompensateManualQueueResponse);
 }
 
 service PolyclinicService {

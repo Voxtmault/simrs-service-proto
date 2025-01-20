@@ -35,6 +35,28 @@ message GetFrontDeskQueueResponse {
     repeated Queue data = 4;
 }
 
+message ManualQueueRequest {
+    int64 idEncounter = 1;
+    string mrNumber = 2;
+    HelperVar room = 3;
+    Accounting accounting = 4;
+}
+message ManualQueueResponse {
+    int32 code = 1;
+    string message = 2;
+    string errorMessage = 3;
+}
+
+message CompensateManualQueueRequest {
+    int64 idQueue = 1;
+    Accounting accounting = 2;
+}
+message CompensateManualQueueResponse {
+    int32 code = 1;
+    string message = 2;
+    string errorMessage = 3;
+}
+
 // Model definitions
 message Queue {
     int64 idQueue = 1;

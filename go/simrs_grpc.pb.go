@@ -269,6 +269,8 @@ type QueueServiceClient interface {
 	UpdateQueue(ctx context.Context, in *UpdateQueueRequest, opts ...grpc.CallOption) (*UpdateQueueResponse, error)
 	CompensateUpdateQueueEncounter(ctx context.Context, in *CompensateUpdateQueueEncounterRequest, opts ...grpc.CallOption) (*CompensateUpdateQueueEncounterResponse, error)
 	GetFrontDeskQueue(ctx context.Context, in *GetFrontDeskQueueRequest, opts ...grpc.CallOption) (*GetFrontDeskQueueResponse, error)
+	ManualQueue(ctx context.Context, in *ManualQueueRequest, opts ...grpc.CallOption) (*ManualQueueResponse, error)
+	CompensateManualQueue(ctx context.Context, in *CompensateManualQueueRequest, opts ...grpc.CallOption) (*CompensateManualQueueResponse, error)
 }
 
 type queueServiceClient struct {
@@ -306,6 +308,24 @@ func (c *queueServiceClient) GetFrontDeskQueue(ctx context.Context, in *GetFront
 	return out, nil
 }
 
+func (c *queueServiceClient) ManualQueue(ctx context.Context, in *ManualQueueRequest, opts ...grpc.CallOption) (*ManualQueueResponse, error) {
+	out := new(ManualQueueResponse)
+	err := c.cc.Invoke(ctx, "/simrs.QueueService/ManualQueue", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *queueServiceClient) CompensateManualQueue(ctx context.Context, in *CompensateManualQueueRequest, opts ...grpc.CallOption) (*CompensateManualQueueResponse, error) {
+	out := new(CompensateManualQueueResponse)
+	err := c.cc.Invoke(ctx, "/simrs.QueueService/CompensateManualQueue", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // QueueServiceServer is the server API for QueueService service.
 // All implementations must embed UnimplementedQueueServiceServer
 // for forward compatibility
@@ -313,6 +333,8 @@ type QueueServiceServer interface {
 	UpdateQueue(context.Context, *UpdateQueueRequest) (*UpdateQueueResponse, error)
 	CompensateUpdateQueueEncounter(context.Context, *CompensateUpdateQueueEncounterRequest) (*CompensateUpdateQueueEncounterResponse, error)
 	GetFrontDeskQueue(context.Context, *GetFrontDeskQueueRequest) (*GetFrontDeskQueueResponse, error)
+	ManualQueue(context.Context, *ManualQueueRequest) (*ManualQueueResponse, error)
+	CompensateManualQueue(context.Context, *CompensateManualQueueRequest) (*CompensateManualQueueResponse, error)
 	mustEmbedUnimplementedQueueServiceServer()
 }
 
@@ -328,6 +350,12 @@ func (UnimplementedQueueServiceServer) CompensateUpdateQueueEncounter(context.Co
 }
 func (UnimplementedQueueServiceServer) GetFrontDeskQueue(context.Context, *GetFrontDeskQueueRequest) (*GetFrontDeskQueueResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetFrontDeskQueue not implemented")
+}
+func (UnimplementedQueueServiceServer) ManualQueue(context.Context, *ManualQueueRequest) (*ManualQueueResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ManualQueue not implemented")
+}
+func (UnimplementedQueueServiceServer) CompensateManualQueue(context.Context, *CompensateManualQueueRequest) (*CompensateManualQueueResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CompensateManualQueue not implemented")
 }
 func (UnimplementedQueueServiceServer) mustEmbedUnimplementedQueueServiceServer() {}
 
@@ -396,6 +424,42 @@ func _QueueService_GetFrontDeskQueue_Handler(srv interface{}, ctx context.Contex
 	return interceptor(ctx, in, info, handler)
 }
 
+func _QueueService_ManualQueue_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ManualQueueRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(QueueServiceServer).ManualQueue(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/simrs.QueueService/ManualQueue",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(QueueServiceServer).ManualQueue(ctx, req.(*ManualQueueRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _QueueService_CompensateManualQueue_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CompensateManualQueueRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(QueueServiceServer).CompensateManualQueue(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/simrs.QueueService/CompensateManualQueue",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(QueueServiceServer).CompensateManualQueue(ctx, req.(*CompensateManualQueueRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // QueueService_ServiceDesc is the grpc.ServiceDesc for QueueService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -414,6 +478,14 @@ var QueueService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetFrontDeskQueue",
 			Handler:    _QueueService_GetFrontDeskQueue_Handler,
+		},
+		{
+			MethodName: "ManualQueue",
+			Handler:    _QueueService_ManualQueue_Handler,
+		},
+		{
+			MethodName: "CompensateManualQueue",
+			Handler:    _QueueService_CompensateManualQueue_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

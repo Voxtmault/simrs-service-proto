@@ -616,6 +616,128 @@ proto.simrs.QueueServicePromiseClient.prototype.getFrontDeskQueue =
 
 
 /**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.simrs.ManualQueueRequest,
+ *   !proto.simrs.ManualQueueResponse>}
+ */
+const methodDescriptor_QueueService_ManualQueue = new grpc.web.MethodDescriptor(
+  '/simrs.QueueService/ManualQueue',
+  grpc.web.MethodType.UNARY,
+  front_desk_pb.ManualQueueRequest,
+  front_desk_pb.ManualQueueResponse,
+  /**
+   * @param {!proto.simrs.ManualQueueRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  front_desk_pb.ManualQueueResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.simrs.ManualQueueRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.simrs.ManualQueueResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.simrs.ManualQueueResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.simrs.QueueServiceClient.prototype.manualQueue =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/simrs.QueueService/ManualQueue',
+      request,
+      metadata || {},
+      methodDescriptor_QueueService_ManualQueue,
+      callback);
+};
+
+
+/**
+ * @param {!proto.simrs.ManualQueueRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.simrs.ManualQueueResponse>}
+ *     Promise that resolves to the response
+ */
+proto.simrs.QueueServicePromiseClient.prototype.manualQueue =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/simrs.QueueService/ManualQueue',
+      request,
+      metadata || {},
+      methodDescriptor_QueueService_ManualQueue);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.simrs.CompensateManualQueueRequest,
+ *   !proto.simrs.CompensateManualQueueResponse>}
+ */
+const methodDescriptor_QueueService_CompensateManualQueue = new grpc.web.MethodDescriptor(
+  '/simrs.QueueService/CompensateManualQueue',
+  grpc.web.MethodType.UNARY,
+  front_desk_pb.CompensateManualQueueRequest,
+  front_desk_pb.CompensateManualQueueResponse,
+  /**
+   * @param {!proto.simrs.CompensateManualQueueRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  front_desk_pb.CompensateManualQueueResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.simrs.CompensateManualQueueRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.simrs.CompensateManualQueueResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.simrs.CompensateManualQueueResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.simrs.QueueServiceClient.prototype.compensateManualQueue =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/simrs.QueueService/CompensateManualQueue',
+      request,
+      metadata || {},
+      methodDescriptor_QueueService_CompensateManualQueue,
+      callback);
+};
+
+
+/**
+ * @param {!proto.simrs.CompensateManualQueueRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.simrs.CompensateManualQueueResponse>}
+ *     Promise that resolves to the response
+ */
+proto.simrs.QueueServicePromiseClient.prototype.compensateManualQueue =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/simrs.QueueService/CompensateManualQueue',
+      request,
+      metadata || {},
+      methodDescriptor_QueueService_CompensateManualQueue);
+};
+
+
+/**
  * @param {string} hostname
  * @param {?Object} credentials
  * @param {?grpc.web.ClientOptions} options
