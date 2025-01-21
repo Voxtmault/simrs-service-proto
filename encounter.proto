@@ -49,8 +49,8 @@ message Encounter {
     EncounterPersonInCharge pic = 11;
     string note = 12;
     Accounting accounting = 13;
-    repeated HelperVar attendingDoctor = 14;
-    repeated HelperVar attendingNurse = 15;
+    repeated MedicalPersonnel attendingDoctor = 14;
+    repeated MedicalPersonnel attendingNurse = 15;
 }
 
 message EncounterRoomHistory {
@@ -75,6 +75,11 @@ message EncounterPersonInCharge {
     string name = 1;
     string phone = 2;
     HelperVar relation = 3;
+}
+
+message MedicalPersonnel {
+    HelperVar user = 1;
+    HelperVar room = 2;
 }
 
 // Generic Encounter Service Response
